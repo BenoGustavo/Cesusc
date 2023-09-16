@@ -27,6 +27,9 @@ class DoublyLinkedList:
     def removeAtBeginning(self):
         if self.head is not None:
             self.head = self.head.nextNode
+
+            #The head don't have previousNode so it's none
+            self.head.previousNode = None
         else:
             print("Your list is empty")
 
@@ -113,7 +116,11 @@ if __name__ == "__main__":
     newList.insertAtBeginning(2)
     newList.insertAtBeginning(3)
     newList.insertAtBeginning(4)
-    #newList.InsertAtIndex(10,1)
+    newList.InsertAtIndex(10,1)
+    
+    #newList.removeAtBeginning()
+    #newList.removeAtEnd()
+
     newList.printList()
     print()
     newList.printBackwards()
