@@ -83,29 +83,29 @@ class LinkedList:
             print(f"{printedNode}, ", end="")
             printedNode = printedNode.nextNode
 
+if __name__ == "__main__":
+    # Testing functions
 
-# Testing functions
-
-newList = LinkedList(1)
-newList.insertAtBeginning(8)
-newList.insertAtEnd(2)
-newList.insertAtEnd(3)
-newList.insertAtEnd(5)
-newList.InsertAtIndex(4, 5)
-newList.removeAtEnd()
-print("Elemento encontrado no indice: ", newList.findElement(2))
-# newList.removeAtBeginning()
-# newList.removeAtBeginning()
-# newList.removeAtBeginning()
-# newList.removeAtBeginning()
-# newList.removeAtBeginning()
-newList.printList()
+    newList = LinkedList(1)
+    newList.insertAtBeginning(8)
+    newList.insertAtEnd(2)
+    newList.insertAtEnd(3)
+    newList.insertAtEnd(5)
+    newList.InsertAtIndex(4, 5)
+    newList.removeAtEnd()
+    print("Elemento encontrado no indice: ", newList.findElement(2))
+    # newList.removeAtBeginning()
+    # newList.removeAtBeginning()
+    # newList.removeAtBeginning()
+    # newList.removeAtBeginning()
+    # newList.removeAtBeginning()
+    newList.printList()
 
 
-# Debug and understanding
+    # Debug and understanding
 
-# obj1 = Node(10)
-# obj2 = Node(8)
-# obj1.nextNode = obj2
-# print(obj1)
-# print(obj1.nextNode)
+    # obj1 = Node(10)
+    # obj2 = Node(8)
+    # obj1.nextNode = obj2
+    # print(obj1)
+    # print(obj1.nextNode)

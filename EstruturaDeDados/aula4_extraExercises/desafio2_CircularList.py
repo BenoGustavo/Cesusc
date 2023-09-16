@@ -10,7 +10,7 @@ class Node:
 class CircularList:
     def __init__(self, data: int) -> None:
         self.head = Node(data)
-        self.data = data
+        self.head.nextNode = self.head  # Point to itself in a circular list
 
     def findElement(self, data):
         node = self.head
@@ -35,6 +35,17 @@ class CircularList:
             print("Your list is empty")
             return
 
+        if self.head.nextNode == self.head:  # Only one node in the circular list
+            self.head = None
+            return
+
+        finalNode = self.head
+        while finalNode.nextNode != self.head:
+            finalNode = finalNode.nextNode
+
+        finalNode.previousNode.nextNode = self.head
+        self.head.previousNode = finalNode.previousNode
+
         # if the first next value of the head is none the last value is the head itself
         if self.head.nextNode is None:
             self.head = None
@@ -47,55 +58,51 @@ class CircularList:
             finalNode = finalNode.nextNode
         head.nextNode = None
 
-    #Working as a circularlist
     def insertAtBeginning(self, data):
-        finalNode = self.head
-
-        while finalNode.nextNode:
-            finalNode = finalNode.nextNode
-
         newNode = Node(data)
-        newNode.nextNode = self.head
-        newNode.nextNode.previousNode = newNode
 
-        self.head = newNode
-        self.head.previousNode = finalNode
-
-        finalNode.nextNode = self.head
+        if self.head is None:
+            newNode.nextNode = newNode  # Point to itself in an empty list
+            newNode.previousNode = newNode  # Point to itself in an empty list
+            self.head = newNode
+        else:
+            newNode.nextNode = self.head
+            newNode.previousNode = self.head.previousNode
+            self.head.previousNode.nextNode = newNode
+            self.head.previousNode = newNode
+            self.head = newNode
 
 
     def insertAtEnd(self, data):
-        newNode = self.head
-        while newNode.nextNode:
-            newNode = newNode.nextNode
-
-        creatingNode = Node(data)
-        creatingNode.nextNode = self.head
-
-        newNode.nextNode = creatingNode
-        newNode.nextNode.previousNode = newNode
-
-
-    #This method don't append any kind of previous
-    def InsertAtIndex(self, data: int, index: int) -> None:
         newNode = Node(data)
-        actualNode = self.head
+        if self.head is None:
+            newNode.nextNode = newNode  # Point to itself in an empty list
+            newNode.previousNode = newNode  # Point to itself in an empty list
+            self.head = newNode
+        else:
+            newNode.nextNode = self.head
+            newNode.previousNode = self.head.previousNode
+            self.head.previousNode.nextNode = newNode
+            self.head.previousNode = newNode
 
-        count = 0
-        while count < index - 1:
-            if actualNode.nextNode == None:
-                raise IndexError("Insert a valid index")
 
-            count += 1
-            actualNode = actualNode.nextNode
+    def InsertAtIndex(self, data: int, index: int) -> None:
+        if index == 0:
+            self.insertAtBeginning(data)
+        else:
+            newNode = Node(data)
+            actualNode = self.head
+            count = 0
+            while count < index - 1:
+                if actualNode.nextNode == self.head:
+                    raise IndexError("Insert a valid index")
+                count += 1
+                actualNode = actualNode.nextNode
 
-        newNode.nextNode = actualNode.nextNode
-        newNode.previousNode = actualNode
-
-        if actualNode.nextNode is not None:
-            actualNode.nextNode.previousNode = newNode  # Set the previous node of the node after the insertion point
-        
-        actualNode.nextNode = newNode
+            newNode.nextNode = actualNode.nextNode
+            newNode.previousNode = actualNode
+            actualNode.nextNode.previousNode = newNode
+            actualNode.nextNode = newNode
 
     def printBackwards(self):
         actualNode = self.head
