@@ -1,3 +1,14 @@
+#VSCODE
+
+.vscode
+
+#PYTHON
+
+__pycache__
+.env
+
+#JAVA
+
 # Compiled class file
 *.class
 
