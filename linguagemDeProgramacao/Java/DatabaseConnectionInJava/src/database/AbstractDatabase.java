@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 abstract class AbstractDatabase {
     private String DATA_BASE_PATH;
@@ -78,9 +79,9 @@ abstract class AbstractDatabase {
 
     public abstract void updateUser(int id, String name, int age, String email, String password) throws SQLException;
 
-    public abstract void deleteUser(int id) throws SQLException;
+    public abstract String deleteUser(int id) throws SQLException;
 
-    public abstract void showUserById(int id) throws SQLException;
+    public abstract ArrayList<String> showUserById(int id) throws SQLException;
 
     // Abstract methods for the product
     public abstract void createNewProduct(String name, double price, String description) throws SQLException;

@@ -3,6 +3,7 @@ package database;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class DataBase extends AbstractDatabase {
 
@@ -47,13 +48,71 @@ public class DataBase extends AbstractDatabase {
     }
 
     @Override
-    public void deleteUser(int id) {
-        // TODO
+    public String deleteUser(int id) {
+        String username;
+        String sql = "SELECT * FROM users WHERE id = ?";
+
+        ResultSet queryResult = null;
+        try (PreparedStatement statement = this.getDatabaseConnection().prepareStatement(sql)) {
+            statement.setInt(1, id);
+
+            queryResult = statement.executeQuery();
+
+            if (queryResult == null) {
+                return "User not found!";
+            }
+
+            username = queryResult.getString("name");
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return "Database Connetion error!";
+        }
+
+        sql = "DELETE FROM users WHERE id = ?";
+
+        try (PreparedStatement statement = this.getDatabaseConnection().prepareStatement(sql)) {
+            statement.setInt(1, id);
+
+            statement.execute();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return "Database Connetion error!";
+        }
+        return "User " + username + " deleted!";
     }
 
     @Override
-    public void showUserById(int id) {
-        // TODO
+    public ArrayList<String> showUserById(int id) throws SQLException {
+        ArrayList<String> user = new ArrayList<>();
+
+        if (id == 0) {
+            return user;
+        }
+
+        String sql = "SELECT * FROM users WHERE id = ?";
+
+        try (PreparedStatement statement = this.getDatabaseConnection().prepareStatement(sql)) {
+            statement.setInt(1, id);
+
+            ResultSet queryResult = statement.executeQuery();
+
+            if (queryResult != null) {
+                int userId = queryResult.getInt("id");
+                String name = queryResult.getString("name");
+                String email = queryResult.getString("email");
+                String password = queryResult.getString("password");
+
+                user.add(String.valueOf(userId));
+                user.add(name);
+                user.add(email);
+                user.add(password);
+
+                return user;
+            }
+
+            return user;
+        }
     }
 
     @Override
