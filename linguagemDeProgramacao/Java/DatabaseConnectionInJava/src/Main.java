@@ -17,7 +17,7 @@ class Main {
 
         // userInfos
         int userId = 0;
-        String deleteUserId = 0;
+        String deleteUserId;
         ArrayList<String> credentials = new ArrayList<String>();
         ArrayList<String> userData = new ArrayList<String>();
         ArrayList<String> newUserData = new ArrayList<String>();
@@ -54,7 +54,7 @@ class Main {
                         System.out.println("\nLogin successful!");
 
                         try {
-                            Thread.sleep(2000); // Pause for 5 seconds
+                            Thread.sleep(2000); // Pause for 2 seconds
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -62,7 +62,7 @@ class Main {
                         System.out.println("\nLogin failed!");
 
                         try {
-                            Thread.sleep(2000); // Pause for 5 seconds
+                            Thread.sleep(2000); // Pause for 2 seconds
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -92,8 +92,13 @@ class Main {
                                 break;
                             case 3:
                                 // delete user
-                                // deleteUserId = TerminalMenu.deleteUserMenu();
-                                // dataBase.deleteUser(Utils.convertStringToInteger());
+                                deleteUserId = TerminalMenu.deleteUserMenu();
+                                System.out.println(dataBase.deleteUser(Utils.convertStringToInteger(deleteUserId)));
+                                try {
+                                    Thread.sleep(2000); // Pause for 2 seconds
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
                                 break;
                             case 4:
                                 exitUsersMenu = true;
