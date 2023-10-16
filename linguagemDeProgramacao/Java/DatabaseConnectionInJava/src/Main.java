@@ -12,15 +12,34 @@ import utils.Utils;
 
 class Main {
     public static void main(String[] args) throws SQLException, IOException {
+
+        // Variables
+
+        // userInfos
         int userId = 0;
+        String deleteUserId = 0;
         ArrayList<String> credentials = new ArrayList<String>();
-        Boolean exitProgram = false;
+        ArrayList<String> userData = new ArrayList<String>();
+        ArrayList<String> newUserData = new ArrayList<String>();
+
+        // booleans
+        Boolean exitProgram = false, exitUsersMenu = false;
+
+        // UserSelection
         String userChoice;
+
+        // create database
         DataBase dataBase = new DataBase();
 
+        // Main loop
         while (!exitProgram) {
+            // Resetting variables
+            exitUsersMenu = false;
+
             do {
-                TerminalMenu.clearTerminal();
+                userData = dataBase.showUserById(userId);
+
+                TerminalMenu.whoIsLoggedIn(userData);
                 userChoice = TerminalMenu.mainMenu();
             } while (!Utils.isUserInputValid(userChoice, TerminalMenu.MAIN_MENU_OPTIONS));
 
@@ -32,13 +51,58 @@ class Main {
 
                     // Checking login status
                     if (userId != 0) {
-                        System.out.println("Login successful!");
+                        System.out.println("\nLogin successful!");
+
+                        try {
+                            Thread.sleep(2000); // Pause for 5 seconds
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     } else {
-                        System.out.println("Login failed!");
+                        System.out.println("\nLogin failed!");
+
+                        try {
+                            Thread.sleep(2000); // Pause for 5 seconds
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
 
                     break;
                 case 2:
+                    // Manage users
+                    // user menu loop
+                    while (!exitUsersMenu) {
+                        do {
+                            userChoice = TerminalMenu.usersMenu();
+                        } while (!Utils.isUserInputValid(userChoice, TerminalMenu.USERS_MENU_OPTIONS));
+
+                        switch (Utils.convertStringToInteger(userChoice)) {
+                            case 1:
+                                // create new user
+                                newUserData = TerminalMenu.createNewUserMenu();
+
+                                dataBase.createNewUser(newUserData.get(0),
+                                        Utils.convertStringToInteger(newUserData.get(1)),
+                                        newUserData.get(2), newUserData.get(3));
+                                break;
+                            case 2:
+                                // update user
+                                // Preguiça de fazer
+                                break;
+                            case 3:
+                                // delete user
+                                // deleteUserId = TerminalMenu.deleteUserMenu();
+                                // dataBase.deleteUser(Utils.convertStringToInteger());
+                                break;
+                            case 4:
+                                exitUsersMenu = true;
+                                break;
+
+                            default:
+                                break;
+                        }
+                    }
 
                     break;
                 case 3:
