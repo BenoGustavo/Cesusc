@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -10,7 +11,7 @@ import utils.Utils;
 // dataBase.createNewOrder(1, 1);
 
 class Main {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, IOException {
         int userId = 0;
         ArrayList<String> credentials = new ArrayList<String>();
         Boolean exitProgram = false;
