@@ -1,12 +1,13 @@
-package database.product;
+package database;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Scanner;
 
-import database.abstractDatabase;
+import utils.TerminalMenu;
 
 /**
  * This class controls the interaction between the products and the database
@@ -14,6 +15,10 @@ import database.abstractDatabase;
 public class ProductsController extends abstractDatabase {
 
     private ArrayList<ProductsModel> products = new ArrayList<ProductsModel>();
+
+    public ArrayList<ProductsModel> getProductList() {
+        return this.products;
+    }
 
     public ArrayList<ProductsModel> loadDataBase() throws SQLException {
         String sql = "SELECT * FROM products;";
@@ -50,13 +55,31 @@ public class ProductsController extends abstractDatabase {
     }
 
     public ProductsController() throws SQLException {
-        setDatabasePath("jdbc:sqlite:src/database/users_and_products.db");
+        setDatabasePath("jdbc:sqlite:database/Database.db");
         makeDataBase();
+
+        // Load the database in to a list
+        this.products = loadDataBase();
+    }
+
+    public int getLastIdFromDb() {
+        String sql = "SELECT id FROM products ORDER BY id DESC LIMIT 1;";
+
+        try (PreparedStatement statement = this.getDatabaseConnection().prepareStatement(sql);
+                ResultSet resultSet = statement.executeQuery()) {
+
+            return resultSet.getInt("id");
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return 0;
     }
 
     @Override
     public boolean create(ProductsModel product) throws SQLException {
-        String sql = "INSERT INTO products (name, price, quantity) VALUES (?, ?, ?);";
+        String sql = "INSERT INTO products (name, price, quantity,created_at,last_update_at) VALUES (?, ?, ?, ?, ?);";
+        int lastID;
 
         try (PreparedStatement statement = this.getDatabaseConnection().prepareStatement(sql)) {
             statement.setString(1, product.getName());
@@ -65,6 +88,14 @@ public class ProductsController extends abstractDatabase {
             statement.setTimestamp(4, product.getCreationDate());
             statement.setTimestamp(5, product.getLastTimeUpdated());
             statement.executeUpdate();
+
+            // setting the id on the product
+            lastID = this.getLastIdFromDb();
+            product.setId(lastID);
+
+            // add the new product to the list
+            this.products.add(product);
+
             return true;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -80,8 +111,8 @@ public class ProductsController extends abstractDatabase {
             statement.setString(1, product.getName());
             statement.setDouble(2, product.getPrice());
             statement.setInt(3, product.getQuantity());
-            statement.setTimestamp(5, product.getCreationDate());
-            statement.setInt(6, product.getId());
+            statement.setTimestamp(4, product.getLastTimeUpdated());
+            statement.setInt(5, product.getId());
             statement.executeUpdate();
             return true;
 
@@ -92,16 +123,18 @@ public class ProductsController extends abstractDatabase {
     }
 
     @Override
-    public String delete(int Id) throws SQLException {
+    public boolean delete(ProductsModel product) throws SQLException {
         String productName = "not found";
         String sql = "SELECT * FROM products WHERE id = ?";
+
+        Scanner userInput = new Scanner(System.in);
 
         ResultSet queryResult = null;
 
         // Get the product name to show on the return message and checks if the product
         // exists on the database
         try (PreparedStatement statement = this.getDatabaseConnection().prepareStatement(sql)) {
-            statement.setInt(1, Id);
+            statement.setInt(1, product.getId());
 
             queryResult = statement.executeQuery();
 
@@ -118,21 +151,43 @@ public class ProductsController extends abstractDatabase {
         sql = "DELETE FROM products WHERE id = ?";
 
         try (PreparedStatement statement = this.getDatabaseConnection().prepareStatement(sql)) {
-            statement.setInt(1, Id);
+            statement.setInt(1, product.getId());
 
             statement.execute();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return "Product " + productName + " deleted!";
+
+        // removing from the list of products
+        int index = -1;
+        for (int i = 0; i < products.size(); i++) {
+
+            // finding the correct item to remove
+            if (products.get(i).getId() == product.getId()) {
+                index = i;
+                break;
+            }
+        }
+        if (index != -1) {
+            products.remove(index);
+        }
+
+        System.out.println("Produto " + productName + " deletado com sucesso!");
+        System.out.print("\nAperte qualquer tecla para continuar: ");
+        userInput.nextLine();
+        return true;
     }
 
     @Override
     public void listItemsById(int Id) throws SQLException {
+        Scanner userInputWait = new Scanner(System.in);
         String sql = "SELECT * FROM products WHERE id = ?;";
 
-        try (PreparedStatement statement = this.getDatabaseConnection().prepareStatement(sql);
-                ResultSet resultSet = statement.executeQuery()) {
+        try (PreparedStatement statement = this.getDatabaseConnection().prepareStatement(sql)) {
+
+            statement.setInt(1, Id);
+
+            ResultSet resultSet = statement.executeQuery();
 
             System.out.println("\n----- PRODUCT " + resultSet.getString("name") + " -----");
             int id = resultSet.getInt("id");
@@ -149,10 +204,16 @@ public class ProductsController extends abstractDatabase {
             System.out.println("CREATED AT: " + creationDate);
             System.out.println("LAST UPDATE AT: " + lastUpdateDate);
         }
+        // Waiting for an user input to continue
+        System.out.print("\nAperte qualquer tecla para continuar: ");
+        userInputWait.nextLine();
     }
 
     @Override
     public void listAllItems() throws SQLException {
+        TerminalMenu.clearTerminal();
+
+        Scanner userInputWait = new Scanner(System.in);
         String sql = "SELECT * FROM products;";
 
         try (PreparedStatement statement = this.getDatabaseConnection().prepareStatement(sql);
@@ -176,5 +237,7 @@ public class ProductsController extends abstractDatabase {
                 System.out.println("-----------------------");
             }
         }
+        System.out.print("\nAperte qualquer tecla para continuar: ");
+        userInputWait.nextLine();
     }
 }

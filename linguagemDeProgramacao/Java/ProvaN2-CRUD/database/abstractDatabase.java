@@ -5,8 +5,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import database.product.ProductsModel;
-
 public abstract class abstractDatabase {
     private String DATA_BASE_PATH;
 
@@ -24,7 +22,7 @@ public abstract class abstractDatabase {
         }
     }
 
-    public Connection getDatabaseConnection() {
+    public Connection getDatabaseConnection() throws SQLException {
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(DATA_BASE_PATH);
@@ -37,17 +35,19 @@ public abstract class abstractDatabase {
     public void makeDataBase() throws SQLException {
 
         // Create users table
-        String sql = "CREATE TABLE IF NOT EXISTS produtos (" +
+        String sql = "CREATE TABLE IF NOT EXISTS products (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "name TEXT NOT NULL," +
                 "price REAL NOT NULL," +
-                "quantity INTEGER NOT NULL" +
+                "quantity INTEGER NOT NULL," +
                 "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP," +
                 "last_update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP" +
                 ");";
 
         try (PreparedStatement statement = this.getDatabaseConnection().prepareStatement(sql)) {
             statement.execute();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
     }
 
@@ -76,7 +76,7 @@ public abstract class abstractDatabase {
      * @return a boolean with true or false, if the return is true everything is
      *         alright otherwise something went wrong.
      */
-    public abstract String delete(int Id) throws SQLException;
+    public abstract boolean delete(ProductsModel product) throws SQLException;
 
     /**
      * List one item from an certain table
