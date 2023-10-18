@@ -14,10 +14,12 @@ class Main {
         ArrayList<String> productData;
         ProductsModel productToUpdate, productToDelete;
 
+        @SuppressWarnings("resource")
         Scanner userInput = new Scanner(System.in);
         ProductsController Product = new ProductsController();
 
         do {
+            Product.checkDatabaseConnection();
             userSelection = TerminalMenu.mainMenu();
 
             switch (userSelection) {
