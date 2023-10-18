@@ -47,7 +47,7 @@ public class ProductsController extends abstractDatabase {
 
     // Constructor Overloading with and without database path
     public ProductsController(String path) throws SQLException {
-        setDatabasePath(path);
+        setDatabasePath("jdbc:sqlite:" + path);
         makeDataBase();
 
         // Load the database in to a list
