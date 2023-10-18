@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import utils.TerminalMenu;
+
 public abstract class abstractDatabase {
     private String DATA_BASE_PATH;
 
@@ -15,7 +17,8 @@ public abstract class abstractDatabase {
     public void checkDatabaseConnection() {
         try (Connection conn = DriverManager.getConnection(DATA_BASE_PATH)) {
             if (conn != null) {
-                System.out.println("Connection to SQLite has been established.");
+                TerminalMenu.clearTerminal();
+                System.out.println("Conexão com o banco de dados realizada com sucesso.\n");
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -54,7 +57,8 @@ public abstract class abstractDatabase {
     /**
      * Creates a something on the database
      * 
-     * @param
+     * @param product Is an new instance of the product model class that is gonna be
+     *                inserted on the database
      * @return a boolean with true or false, if the return is true everything is
      *         alright otherwise something went wrong.
      */
@@ -63,7 +67,10 @@ public abstract class abstractDatabase {
     /**
      * Updates something on the database
      * 
-     * @param
+     * @param product Is an already created instance of the product model class that
+     *                is gonna be
+     *                updated using the setter inside the class then placed on the
+     *                database
      * @return a boolean with true or false, if the return is true everything is
      *         alright otherwise something went wrong.
      */
@@ -72,7 +79,9 @@ public abstract class abstractDatabase {
     /**
      * Deletes something from the database
      * 
-     * @param
+     * @param product Is an already created instance of the product model class that
+     *                will be used to get the ID of the product on the database then
+     *                use it to delete the data.
      * @return a boolean with true or false, if the return is true everything is
      *         alright otherwise something went wrong.
      */
@@ -81,7 +90,7 @@ public abstract class abstractDatabase {
     /**
      * List one item from an certain table
      * 
-     * @param Id from the item you want to get
+     * @param Id from the item you want to see the data
      * @return print the item on the screen
      */
     public abstract void listItemsById(int Id) throws SQLException;

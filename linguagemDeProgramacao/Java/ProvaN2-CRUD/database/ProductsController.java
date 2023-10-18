@@ -127,6 +127,7 @@ public class ProductsController extends abstractDatabase {
         String productName = "not found";
         String sql = "SELECT * FROM products WHERE id = ?";
 
+        @SuppressWarnings("resource")
         Scanner userInput = new Scanner(System.in);
 
         ResultSet queryResult = null;
@@ -180,7 +181,10 @@ public class ProductsController extends abstractDatabase {
 
     @Override
     public void listItemsById(int Id) throws SQLException {
+
+        @SuppressWarnings("resource")
         Scanner userInputWait = new Scanner(System.in);
+
         String sql = "SELECT * FROM products WHERE id = ?;";
 
         try (PreparedStatement statement = this.getDatabaseConnection().prepareStatement(sql)) {
@@ -213,7 +217,9 @@ public class ProductsController extends abstractDatabase {
     public void listAllItems() throws SQLException {
         TerminalMenu.clearTerminal();
 
+        @SuppressWarnings("resource")
         Scanner userInputWait = new Scanner(System.in);
+
         String sql = "SELECT * FROM products;";
 
         try (PreparedStatement statement = this.getDatabaseConnection().prepareStatement(sql);
