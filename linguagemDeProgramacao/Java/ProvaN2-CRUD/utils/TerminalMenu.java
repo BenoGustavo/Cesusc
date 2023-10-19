@@ -82,6 +82,7 @@ public class TerminalMenu {
 
         System.out.println("1 - Listar todos os produtos");
         System.out.println("2 - Listar Produto por ID");
+        System.out.println("3 - Retornar");
         System.out.print("Escolha uma opção: ");
         int op = userInput.nextInt();
 
