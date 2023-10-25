@@ -35,7 +35,7 @@ public abstract class abstractDatabase {
         return conn;
     }
 
-    public void makeDataBase() throws SQLException {
+    protected void makeDataBase() throws SQLException {
 
         // Create users table
         String sql = "CREATE TABLE IF NOT EXISTS products (" +
