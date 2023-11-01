@@ -40,9 +40,9 @@
       </TableView>
       <HBox prefHeight="107.0" prefWidth="640.0" style="-fx-spacing: 125; -fx-alignment: center;">
          <children>
-            <Button fx:id="createBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="143.0" text="Create" />
-            <Button fx:id="updateBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="143.0" text="Update" />
-            <Button fx:id="deleteBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="143.0" text="Delete" />
+            <Button fx:id="createBtn" alignment="CENTER" onAction="#loadCreationPage" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="143.0" text="Create" />
+            <Button fx:id="updateBtn" alignment="CENTER" onAction="#loadUpdatePage" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="143.0" text="Update" />
+            <Button fx:id="deleteBtn" alignment="CENTER" onAction="#loadDeletePage" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="143.0" text="Delete" />
          </children>
       </HBox>
    </children>
