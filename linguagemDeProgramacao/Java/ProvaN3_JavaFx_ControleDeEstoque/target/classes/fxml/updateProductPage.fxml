@@ -52,7 +52,7 @@
                      </font>
                   </Label>
                   <TextField fx:id="quantityInput" layoutX="95.0" layoutY="371.0" prefHeight="50.0" prefWidth="590.0" promptText="Insira a quantidade existente em estoque do produto" />
-                  <Button fx:id="createProductBtn" layoutX="310.0" layoutY="448.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="160.0" style="-fx-background-color: #5DBB63;" text="Atualizar Produto">
+                  <Button fx:id="createProductBtn" onAction="#updateProduct" layoutX="310.0" layoutY="448.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="160.0" style="-fx-background-color: #5DBB63;" text="Atualizar Produto">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
