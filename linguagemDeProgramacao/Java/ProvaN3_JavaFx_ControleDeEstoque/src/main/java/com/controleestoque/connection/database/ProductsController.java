@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * This class controls the interaction between the products and the database
@@ -126,9 +125,6 @@ public class ProductsController extends abstractDatabase {
         String productName = "not found";
         String sql = "SELECT * FROM products WHERE id = ?";
 
-        @SuppressWarnings("resource")
-        Scanner userInput = new Scanner(System.in);
-
         ResultSet queryResult = null;
 
         // Get the product name to show on the return message and checks if the product
@@ -173,16 +169,11 @@ public class ProductsController extends abstractDatabase {
         }
 
         System.out.println("Produto " + productName + " deletado com sucesso!");
-        System.out.print("\nAperte qualquer tecla para continuar: ");
-        userInput.nextLine();
         return true;
     }
 
     @Override
     public void listItemsById(int Id) throws SQLException {
-
-        @SuppressWarnings("resource")
-        Scanner userInputWait = new Scanner(System.in);
 
         String sql = "SELECT * FROM products WHERE id = ?;";
 
@@ -207,16 +198,10 @@ public class ProductsController extends abstractDatabase {
             System.out.println("CREATED AT: " + creationDate);
             System.out.println("LAST UPDATE AT: " + lastUpdateDate);
         }
-        // Waiting for an user input to continue
-        System.out.print("\nAperte qualquer tecla para continuar: ");
-        userInputWait.nextLine();
     }
 
     @Override
     public void listAllItems() throws SQLException {
-
-        @SuppressWarnings("resource")
-        Scanner userInputWait = new Scanner(System.in);
 
         String sql = "SELECT * FROM products;";
 
@@ -241,7 +226,15 @@ public class ProductsController extends abstractDatabase {
                 System.out.println("-----------------------");
             }
         }
-        System.out.print("\nAperte qualquer tecla para continuar: ");
-        userInputWait.nextLine();
+    }
+
+    public ProductsModel findProduct(ArrayList<ProductsModel> listOfProducts, int id) {
+
+        for (ProductsModel Product : listOfProducts) {
+            if (Product.getId() == id) {
+                return Product;
+            }
+        }
+        return null;
     }
 }
