@@ -1,12 +1,15 @@
 package com.controleestoque;
 
+import java.io.IOException;
+import java.sql.SQLException;
+
+import com.controleestoque.connection.database.ProductsController;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class MainApp extends Application {
     private static Stage stage;
@@ -30,7 +33,12 @@ public class MainApp extends Application {
         return fxmlLoader.load();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
+        ProductsController databaseController = new ProductsController(
+                "src/main/java/com/controleestoque/connection/database/Database.db");
+
+        databaseController.checkDatabaseConnection();
+
         launch(args);
     }
 
