@@ -16,6 +16,7 @@ import com.controleestoque.connection.database.ProductsModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
@@ -33,6 +34,14 @@ public class CreatePageController implements Initializable {
 
     @FXML
     private void createProductFunction(ActionEvent event) throws IOException, SQLException {
+
+        // Checks if the user has filled all the fields
+        if (Utils.checkFilledTextFields("Erro", "Campos vazios",
+                "Por favor, preencha todos os campos", Alert.AlertType.WARNING,
+                productNameInput, productPriceInput, quantityInput)) {
+            return;
+        }
+
         String productName = productNameInput.getText();
         String productPrice = productPriceInput.getText();
         String productQuantity = quantityInput.getText();
@@ -43,9 +52,17 @@ public class CreatePageController implements Initializable {
         ProductsModel newProduct = new ProductsModel(productName, Double.parseDouble(productPrice),
                 Integer.parseInt(productQuantity));
 
-        databaseController.create(newProduct);
+        // Checks for errors while creating the product then show to the user the status
+        try {
+            databaseController.create(newProduct);
+            Utils.showAlert("Sucesso", "Produto criado com sucesso",
+                    "O produto " + productName + " foi criado com sucesso", Alert.AlertType.INFORMATION);
+        } catch (Exception e) {
+            Utils.showAlert("Erro", "Erro ao criar produto", "Error: " + e.getMessage(),
+                    Alert.AlertType.ERROR);
+            return;
+        }
 
-        // NEED TO IMPLMENT AN ALLERT HERE
     }
 
     @Override
