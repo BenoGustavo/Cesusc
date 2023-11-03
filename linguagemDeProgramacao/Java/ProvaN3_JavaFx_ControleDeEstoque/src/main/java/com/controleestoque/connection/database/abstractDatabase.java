@@ -86,14 +86,6 @@ public abstract class abstractDatabase {
     public abstract boolean delete(ProductsModel product) throws SQLException;
 
     /**
-     * List one item from an certain table
-     * 
-     * @param Id from the item you want to see the data
-     * @return print the item on the screen
-     */
-    public abstract void listItemsById(int Id) throws SQLException;
-
-    /**
      * List all items from an certain table
      * 
      * @param Any

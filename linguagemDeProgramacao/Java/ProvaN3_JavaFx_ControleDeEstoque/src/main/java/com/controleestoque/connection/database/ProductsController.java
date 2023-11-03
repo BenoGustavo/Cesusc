@@ -173,34 +173,6 @@ public class ProductsController extends abstractDatabase {
     }
 
     @Override
-    public void listItemsById(int Id) throws SQLException {
-
-        String sql = "SELECT * FROM products WHERE id = ?;";
-
-        try (PreparedStatement statement = this.getDatabaseConnection().prepareStatement(sql)) {
-
-            statement.setInt(1, Id);
-
-            ResultSet resultSet = statement.executeQuery();
-
-            System.out.println("\n----- PRODUCT " + resultSet.getString("name") + " -----");
-            int id = resultSet.getInt("id");
-            String nome = resultSet.getString("name");
-            double preco = resultSet.getDouble("price");
-            int quantidade = resultSet.getInt("quantity");
-            Timestamp creationDate = resultSet.getTimestamp("created_at");
-            Timestamp lastUpdateDate = resultSet.getTimestamp("last_update_at");
-
-            System.out.println("ID: " + id);
-            System.out.println("NAME: " + nome);
-            System.out.println("PRICE: R$ " + preco);
-            System.out.println("QUANTITY: " + quantidade);
-            System.out.println("CREATED AT: " + creationDate);
-            System.out.println("LAST UPDATE AT: " + lastUpdateDate);
-        }
-    }
-
-    @Override
     public void listAllItems() throws SQLException {
 
         String sql = "SELECT * FROM products;";
@@ -208,7 +180,6 @@ public class ProductsController extends abstractDatabase {
         try (PreparedStatement statement = this.getDatabaseConnection().prepareStatement(sql);
                 ResultSet resultSet = statement.executeQuery()) {
 
-            System.out.println("\n----- PRODUCTS LIST -----");
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String nome = resultSet.getString("name");
@@ -216,14 +187,6 @@ public class ProductsController extends abstractDatabase {
                 int quantidade = resultSet.getInt("quantity");
                 Timestamp creationDate = resultSet.getTimestamp("created_at");
                 Timestamp lastUpdateDate = resultSet.getTimestamp("last_update_at");
-
-                System.out.println("ID: " + id);
-                System.out.println("NAME: " + nome);
-                System.out.println("PRICE: R$ " + preco);
-                System.out.println("QUANTITY: " + quantidade);
-                System.out.println("CREATED AT: " + creationDate);
-                System.out.println("LAST UPDATE AT: " + lastUpdateDate);
-                System.out.println("-----------------------");
             }
         }
     }

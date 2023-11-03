@@ -11,6 +11,7 @@ import com.controleestoque.connection.database.ProductsModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
@@ -29,6 +30,13 @@ public class UpdatePageController implements Initializable {
 
     @FXML
     private void updateProduct(ActionEvent event) throws SQLException {
+        // Checks if the user has filled all the fields
+        if (Utils.checkFilledTextFields("Erro", "Campos vazios",
+                "Por favor, preencha todos os campos", Alert.AlertType.WARNING,
+                productIdInput, productNameInput, productPriceInput, quantityInput)) {
+            return;
+        }
+
         String productId = productIdInput.getText();
         String productName = productNameInput.getText();
         String productPrice = productPriceInput.getText();
@@ -44,9 +52,18 @@ public class UpdatePageController implements Initializable {
             productToUpdate.setName(productName);
             productToUpdate.setPrice(Double.parseDouble(productPrice));
             productToUpdate.setQuantity(Integer.parseInt(productQuantity));
-            databaseController.update(productToUpdate);
+
+            try {
+                databaseController.update(productToUpdate);
+                Utils.showAlert("Sucesso", "Produto atualizado com sucesso",
+                        "O produto " + productName + " foi atualizado com sucesso", Alert.AlertType.INFORMATION);
+            } catch (Exception e) {
+                Utils.showAlert("Erro", "Erro ao criar produto", "Error: " + e.getMessage(),
+                        Alert.AlertType.ERROR);
+            }
         } else {
-            // NEED TO IMPLMENT AN ALLERT HERE
+            Utils.showAlert("Erro", "Produto não encontrado",
+                    "O produto com o ID " + productId + " não foi na base de dados encontrado", Alert.AlertType.ERROR);
         }
 
     }

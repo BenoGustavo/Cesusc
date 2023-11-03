@@ -23,6 +23,11 @@ public class Utils {
     // Shows and alert pop-up with the given parameters
     public static void showAlert(String title, String header, String content, Alert.AlertType alertType) {
         Alert alert = new Alert(alertType);
+        // Makes the alert not resizable
+        alert.resizableProperty().setValue(false);
+        // Sets the size of the alert
+        alert.getDialogPane().setPrefSize(alert.getDialogPane().getWidth(), alert.getDialogPane().getHeight());
+
         alert.setTitle(title);
         alert.setHeaderText(header);
         alert.setContentText(content);

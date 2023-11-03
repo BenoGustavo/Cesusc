@@ -110,5 +110,4 @@ public class ProductsModel {
     public Timestamp getLastTimeUpdated() {
         return last_update_at;
     }
-
 }
