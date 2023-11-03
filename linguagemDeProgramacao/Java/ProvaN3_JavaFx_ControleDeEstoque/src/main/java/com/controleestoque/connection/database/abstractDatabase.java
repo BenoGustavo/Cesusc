@@ -84,12 +84,4 @@ public abstract class abstractDatabase {
      *         alright otherwise something went wrong.
      */
     public abstract boolean delete(ProductsModel product) throws SQLException;
-
-    /**
-     * List all items from an certain table
-     * 
-     * @param Any
-     * @return print all the items on the screen
-     */
-    public abstract void listAllItems() throws SQLException;
 }
