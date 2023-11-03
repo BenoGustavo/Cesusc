@@ -122,27 +122,7 @@ public class ProductsController extends abstractDatabase {
 
     @Override
     public boolean delete(ProductsModel product) throws SQLException {
-        String productName = "not found";
         String sql = "SELECT * FROM products WHERE id = ?";
-
-        ResultSet queryResult = null;
-
-        // Get the product name to show on the return message and checks if the product
-        // exists on the database
-        try (PreparedStatement statement = this.getDatabaseConnection().prepareStatement(sql)) {
-            statement.setInt(1, product.getId());
-
-            queryResult = statement.executeQuery();
-
-            if (queryResult == null) {
-                throw new SQLException("Product not found!");
-            }
-
-            productName = queryResult.getString("name");
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
 
         sql = "DELETE FROM products WHERE id = ?";
 
@@ -167,28 +147,7 @@ public class ProductsController extends abstractDatabase {
         if (index != -1) {
             products.remove(index);
         }
-
-        System.out.println("Produto " + productName + " deletado com sucesso!");
         return true;
-    }
-
-    @Override
-    public void listAllItems() throws SQLException {
-
-        String sql = "SELECT * FROM products;";
-
-        try (PreparedStatement statement = this.getDatabaseConnection().prepareStatement(sql);
-                ResultSet resultSet = statement.executeQuery()) {
-
-            while (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                String nome = resultSet.getString("name");
-                double preco = resultSet.getDouble("price");
-                int quantidade = resultSet.getInt("quantity");
-                Timestamp creationDate = resultSet.getTimestamp("created_at");
-                Timestamp lastUpdateDate = resultSet.getTimestamp("last_update_at");
-            }
-        }
     }
 
     public ProductsModel findProduct(ArrayList<ProductsModel> listOfProducts, int id) {
