@@ -6,5 +6,7 @@ module com.controleestoque {
 
     opens com.controleestoque to javafx.fxml;
 
+    opens com.controleestoque.connection.database to javafx.base;
+
     exports com.controleestoque;
 }
