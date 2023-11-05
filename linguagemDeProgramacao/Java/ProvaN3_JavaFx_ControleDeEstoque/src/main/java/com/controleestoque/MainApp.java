@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import com.controleestoque.connection.database.ProductsController;
 
+import atlantafx.base.theme.Dracula;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,6 +17,8 @@ public class MainApp extends Application {
 
     @Override
     public void start(@SuppressWarnings("exports") Stage s) throws IOException {
+        Application.setUserAgentStylesheet(new Dracula().getUserAgentStylesheet());
+
         stage = s;
         stage.setResizable(false);
         setRoot("mainPage", "Sistema de gerenciamento de produtos");
