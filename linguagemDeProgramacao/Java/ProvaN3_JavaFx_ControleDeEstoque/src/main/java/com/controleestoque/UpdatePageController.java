@@ -70,6 +70,8 @@ public class UpdatePageController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        returnBtn.setGraphic(Utils.RETURN_ICON);
+
         Utils.filterIdInput(productIdInput);
         Utils.filterProductNameInput(productNameInput);
         Utils.filterProductPriceInput(productPriceInput);

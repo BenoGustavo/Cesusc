@@ -3,8 +3,12 @@ package com.controleestoque;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 
 public class Utils {
+
+    public static final ImageView RETURN_ICON = new ImageView(
+            "file:src/main/resources/images/return.png");
 
     // Using *args to check for empty text fields
     public static boolean checkFilledTextFields(String title, String header, String content,

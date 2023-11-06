@@ -67,6 +67,8 @@ public class CreatePageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        returnBtn.setGraphic(Utils.RETURN_ICON);
+
         Utils.filterProductNameInput(productNameInput);
         Utils.filterProductPriceInput(productPriceInput);
         Utils.filterQuantityInput(quantityInput);

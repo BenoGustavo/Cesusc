@@ -12,12 +12,12 @@
    <children>
       <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" style="-fx-padding: 18;">
          <children>
-            <Button fx:id="returnBtn" onAction="#returnBtnFunction" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="39.0" prefWidth="39.0" style="-fx-background-radius: 30;" text="Voltar">
+            <Button fx:id="returnBtn" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#returnBtnFunction" prefHeight="56.0" prefWidth="56.0" style="-fx-background-radius: 30; -fx-font-size: 9;" text="Voltar">
                <font>
                   <Font size="9.0" />
                </font>
             </Button>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="817.0" style="-fx-font-family: Montserrat; -fx-font-weight: bold; -fx-padding: 0;" text="-ATUALIZAR PRODUTO-">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="817.0" style="-fx-font-family: Montserrat; -fx-font-size: 35; -fx-font-weight: bold; -fx-padding: 0;" text="ATUALIZAR PRODUTO">
                <font>
                   <Font size="35.0" />
                </font>
@@ -26,33 +26,33 @@
       </HBox>
       <VBox alignment="CENTER" prefHeight="629.0" prefWidth="900.0" style="-fx-padding: 50;">
          <children>
-            <AnchorPane prefHeight="643.0" prefWidth="780.0" style="-fx-background-color: #D9D9D9; -fx-background-radius: 25;">
+            <AnchorPane prefHeight="643.0" prefWidth="780.0" style="-fx-border-color: #6272A4; -fx-border-radius: 25; -fx-border-width: 2px; -fx-background-color: #44475A; -fx-background-radius: 25;">
                <children>
                   <Label layoutX="97.0" layoutY="44.0" text="ID do produto">
                      <font>
                         <Font name="System Bold" size="17.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="productIdInput" layoutX="95.0" layoutY="76.0" prefHeight="50.0" prefWidth="590.0" promptText="Insira o ID do produto" />
+                  <TextField fx:id="productIdInput" style="-fx-border-width: 2; -fx-border-color: #6272A4; -fx-border-radius: 5;" layoutX="95.0" layoutY="76.0" prefHeight="50.0" prefWidth="590.0" promptText="Insira o ID do produto" />
                   <Label layoutX="97.0" layoutY="139.0" text="Nome">
                      <font>
                         <Font name="System Bold" size="17.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="productNameInput" layoutX="95.0" layoutY="171.0" prefHeight="50.0" prefWidth="590.0" promptText="Insira o nome do produto" />
+                  <TextField fx:id="productNameInput" style="-fx-border-width: 2; -fx-border-color: #6272A4; -fx-border-radius: 5;" layoutX="95.0" layoutY="171.0" prefHeight="50.0" prefWidth="590.0" promptText="Insira o nome do produto" />
                   <Label layoutX="99.0" layoutY="244.0" text="Preco">
                      <font>
                         <Font name="System Bold" size="17.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="productPriceInput" layoutX="95.0" layoutY="273.0" prefHeight="50.0" prefWidth="590.0" promptText="Insira o preço do produto" />
+                  <TextField fx:id="productPriceInput" layoutX="95.0" style="-fx-border-width: 2; -fx-border-color: #6272A4; -fx-border-radius: 5;" layoutY="273.0" prefHeight="50.0" prefWidth="590.0" promptText="Insira o preço do produto" />
                   <Label layoutX="97.0" layoutY="343.0" text="Quantidade (Estoque)">
                      <font>
                         <Font name="System Bold" size="17.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="quantityInput" layoutX="95.0" layoutY="371.0" prefHeight="50.0" prefWidth="590.0" promptText="Insira a quantidade existente em estoque do produto" />
-                  <Button fx:id="createProductBtn" onAction="#updateProduct" layoutX="310.0" layoutY="448.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="160.0" style="-fx-background-color: #5DBB63;" text="Atualizar Produto">
+                  <TextField fx:id="quantityInput" layoutX="95.0" layoutY="371.0" style="-fx-border-width: 2; -fx-border-color: #6272A4; -fx-border-radius: 5;" prefHeight="50.0" prefWidth="590.0" promptText="Insira a quantidade existente em estoque do produto" />
+                  <Button fx:id="createProductBtn" onAction="#updateProduct" layoutX="310.0" layoutY="448.0" style="-fx-font-size: 14;" mnemonicParsing="false" prefHeight="50.0" prefWidth="160.0" text="Atualizar Produto">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>

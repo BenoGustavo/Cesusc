@@ -14,12 +14,12 @@
    <children>
       <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" style="-fx-padding: 18;">
          <children>
-            <Button fx:id="returnBtn" onAction="#returnBtnFunction" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="39.0" prefWidth="39.0" style="-fx-background-radius: 30;" text="Voltar">
+            <Button fx:id="returnBtn" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#returnBtnFunction" prefHeight="56.0" prefWidth="56.0" style="-fx-background-radius: 30; -fx-font-size: 9;" text="Voltar">
                <font>
                   <Font size="9.0" />
                </font>
             </Button>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="817.0" style="-fx-font-family: Montserrat; -fx-font-weight: bold; -fx-padding: 0;" text="-DELETAR PRODUTO-">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="817.0" style="-fx-font-family: Montserrat; -fx-font-weight: bold; -fx-padding: 0; -fx-font-size: 35;" text="DELETAR PRODUTO">
                <font>
                   <Font size="35.0" />
                </font>
@@ -28,15 +28,15 @@
       </HBox>
       <VBox alignment="CENTER" prefHeight="629.0" prefWidth="900.0" style="-fx-padding: 50;">
          <children>
-            <AnchorPane prefHeight="643.0" prefWidth="780.0" style="-fx-background-color: #D9D9D9; -fx-background-radius: 25;">
+            <AnchorPane prefHeight="643.0" prefWidth="780.0" style="-fx-border-color: #6272A4; -fx-border-radius: 25; -fx-border-width: 2px; -fx-background-color: #44475A; -fx-background-radius: 25;">
                <children>
                   <Label layoutX="97.0" layoutY="40.0" text="ID do produto">
                      <font>
                         <Font name="System Bold" size="17.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="productidInput" layoutX="95.0" layoutY="72.0" prefHeight="50.0" prefWidth="590.0" promptText="Insira o ID do produto" />
-                  <Button fx:id="deleteProductBtn" onAction="#deleteProduct" layoutX="310.0" layoutY="448.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="160.0" style="-fx-background-color: #5DBB63;" text="Deletar Produto">
+                  <TextField fx:id="productidInput" layoutX="95.0" layoutY="72.0" prefHeight="50.0" prefWidth="590.0" style="-fx-border-width: 2; -fx-border-color: #6272A4; -fx-border-radius: 5;" promptText="Insira o ID do produto" />
+                  <Button fx:id="deleteProductBtn" onAction="#deleteProduct" layoutX="310.0" layoutY="448.0" mnemonicParsing="false" style="-fx-font-size: 14;" prefHeight="50.0" prefWidth="160.0" text="Deletar Produto">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>

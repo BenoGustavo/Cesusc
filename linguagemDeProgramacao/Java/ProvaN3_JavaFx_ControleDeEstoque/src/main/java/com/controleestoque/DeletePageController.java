@@ -92,6 +92,8 @@ public class DeletePageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        returnBtn.setGraphic(Utils.RETURN_ICON);
+
         Utils.filterIdInput(productidInput);
         try {
             feedTable();
