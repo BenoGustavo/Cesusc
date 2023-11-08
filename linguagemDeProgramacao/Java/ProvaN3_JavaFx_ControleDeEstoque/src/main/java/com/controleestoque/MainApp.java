@@ -16,7 +16,7 @@ public class MainApp extends Application {
     private static Stage stage;
 
     @Override
-    public void start(@SuppressWarnings("exports") Stage s) throws IOException {
+    public void start(Stage s) throws IOException {
         Application.setUserAgentStylesheet(new Dracula().getUserAgentStylesheet());
 
         stage = s;
