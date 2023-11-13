@@ -26,7 +26,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class FXMLController implements Initializable {
+public class MainPageController implements Initializable {
 
     @FXML
     private Button createBtn, updateBtn, deleteBtn, returnBtn;

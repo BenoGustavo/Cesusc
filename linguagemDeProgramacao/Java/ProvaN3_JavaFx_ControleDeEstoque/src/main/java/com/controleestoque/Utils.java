@@ -14,7 +14,6 @@ public class Utils {
     public static boolean checkFilledTextFields(String title, String header, String content,
             Alert.AlertType alertType, TextField... textFields) {
         for (TextField textField : textFields) {
-
             // If the text field is empty, triggers the showAlert function show an alert
             if (textField.getText().isEmpty()) {
                 Utils.showAlert(title, header, content, alertType);
@@ -46,6 +45,8 @@ public class Utils {
     static void filterProductNameInput(TextField productNameInput) {
         productNameInput.textProperty()
                 .addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
+                    // Check if the new value is empty or starts with a space, also checks if the
+                    // user is trying to insert simbols
                     if (!newValue.matches("\\sa-zA-Z0-9*")) {
                         productNameInput.setText(newValue.replaceAll("[^\\sa-zA-Z0-9]*", ""));
                     }
@@ -56,16 +57,23 @@ public class Utils {
     static void filterProductPriceInput(TextField productPriceInput) {
         productPriceInput.textProperty()
                 .addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
+                    // Check if the new value is empty or starts with a dot
                     if (newValue.isEmpty() || newValue.startsWith(".")) {
                         productPriceInput.setText("");
-
-                    } else if (newValue.contains("..")) {
+                        // Checks if the user is trying to insert more than one dot
+                    } else if (newValue.length() - newValue.replace(".", "").length() > 1) {
                         productPriceInput.setText(oldValue);
-
+                        // Checks if the user is trying to insert simbols, or letters
                     } else if (!newValue.matches("\\d*(\\.\\d*)?")) {
                         productPriceInput.setText(newValue.replaceAll("[^\\d.]", ""));
-
                     }
+
+                    // Check if there are more than two digits after the dot
+                    int dotIndex = newValue.indexOf(".");
+                    if (dotIndex != -1 && newValue.length() - dotIndex - 1 > 2) {
+                        productPriceInput.setText(newValue.substring(0, dotIndex + 3));
+                    }
+
                 });
     }
 
@@ -73,6 +81,7 @@ public class Utils {
     static void filterQuantityInput(TextField quantityInput) {
         quantityInput.textProperty()
                 .addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
+                    // Only allow numbers
                     if (!newValue.matches("\\d*")) {
                         quantityInput.setText(newValue.replaceAll("[^\\d]", ""));
                     }
