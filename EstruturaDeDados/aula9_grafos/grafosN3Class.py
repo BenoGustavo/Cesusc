@@ -77,7 +77,7 @@ class GrafoEstadosBrasileiros:
                 self.listaAdjacencia[estadoAtual].extend(estadoAdjacente)
 
     def imprimirListaAdjacencia(self):
-        print("\nLista de adjacência:")
+        print("\nLista de adjacência (Verificar a representação com o professor):")
         for estado, vizinhos in self.listaAdjacencia.items():
             print(estado, "->", vizinhos)
 
@@ -111,10 +111,17 @@ class GrafoEstadosBrasileiros:
             estadoAtual = self.__listaEstadosBrasileiros[i]
             print(estadoAtual, linha)
 
+    def imprimirInformacosDoGrafo(self):
+        print("Numero de nodos " + str(self.grafo.number_of_nodes()))
+        print("Numero de vertices " + str(self.grafo.number_of_edges()), end="\n\n")
+
 
 if __name__ == "__main__":
     grafo = GrafoEstadosBrasileiros()
     grafo.criarGrafo()
+
+    grafo.imprimirInformacosDoGrafo()
+
     grafo.criarListaAdjacencia()
     grafo.imprimirListaAdjacencia()
     grafo.criarMatrizAdjacencia()
