@@ -3,6 +3,15 @@ import matplotlib.pyplot as plt
 
 
 class GrafoEstadosBrasileiros:
+    """Classe que representa o grafo dos estados brasileiros adjacentes um ao outro
+
+    Antes de utilizar qualquer função dessa classe é necessário chamar os metodos com o prefixo criar
+
+    Dentro dessa classe existe: Representação grafica do grafo utilizando matplotlib, representaçao do grafo utilizando lista de adjacencia e matriz de adjacencia
+
+    Returns: None (Todas as funções retornam None)
+    """
+
     def __init__(self) -> None:
         # fmt: off
         self.__listaEstadosBrasileiros = [
@@ -42,7 +51,7 @@ class GrafoEstadosBrasileiros:
             ("TO", ("MA", "PI", "BA", "GO", "MT", "PA")),
         ]
 
-    def criarGrafo(self, name: str = None):
+    def criarGrafo(self, name: str = None) -> None:
         # Create a graph
         self.grafo = nx.Graph(directed=False, name="Estados Brasileiros")
 
@@ -56,11 +65,11 @@ class GrafoEstadosBrasileiros:
             for estado in ligacao[1]:
                 self.grafo.add_edge(ligacao[0], estado)
 
-    def mostrarGrafoUsandoMatplotlib(self):
+    def mostrarGrafoUsandoMatplotlib(self) -> None:
         nx.draw(self.grafo, with_labels=True)
         plt.show()
 
-    def criarListaAdjacencia(self):
+    def criarListaAdjacencia(self) -> None:
         self.listaAdjacencia = {}
 
         # Preenche a lista de adjacencia com as ligações entre os estados
@@ -76,12 +85,12 @@ class GrafoEstadosBrasileiros:
             else:
                 self.listaAdjacencia[estadoAtual].extend(estadoAdjacente)
 
-    def imprimirListaAdjacencia(self):
+    def imprimirListaAdjacencia(self) -> None:
         print("\nLista de adjacência (Verificar a representação com o professor):")
         for estado, vizinhos in self.listaAdjacencia.items():
             print(estado, "->", vizinhos)
 
-    def criarMatrizAdjacencia(self):
+    def criarMatrizAdjacencia(self) -> None:
         print("\nMatriz de adjacência:")
         # Crie uma matriz de adjacência vazia
 
@@ -101,7 +110,7 @@ class GrafoEstadosBrasileiros:
                     self.__listaEstadosBrasileiros.index(estado)
                 ] = 1
 
-    def imprimirMatrizAdjacencia(self):
+    def imprimirMatrizAdjacencia(self) -> None:
         # Imprima a matriz de adjacência com a legenda
         print("   ", end="")
         for estado in self.__listaEstadosBrasileiros:
