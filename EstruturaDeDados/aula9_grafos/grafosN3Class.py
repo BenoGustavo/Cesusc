@@ -1,6 +1,8 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 
+"""INSTALE AS DEPENDENCIAS ANTES DE EXECUTAR O CODIGO (pip install -r requirements.txt)"""
+
 
 class GrafoEstadosBrasileiros:
     """Classe que representa o grafo dos estados brasileiros adjacentes um ao outro
