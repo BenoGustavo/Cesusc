@@ -234,8 +234,91 @@ class GrafoEstadosBrasileiros:
             print(estadoAtual, linha)
 
     def imprimirInformacosDoGrafo(self):
-        print("Numero de nodos " + str(self.grafo.number_of_nodes()))
-        print("Numero de vertices " + str(self.grafo.number_of_edges()), end="\n\n")
+        print("Numero de vertices: " + str(self.grafo.number_of_nodes()))
+        print("Numero de arrestas: " + str(self.grafo.number_of_edges()), end="\n\n")
+
+    def buscaEmLargura(self, estado_inicial):
+        """Realiza a busca em largura a partir de um estado inicial"""
+
+        # Cria uma fila vazia para armazenar os estados a serem visitados
+        fila = []
+
+        # Cria um conjunto vazio para armazenar os estados visitados
+        visitados = set()
+
+        # Adiciona o estado inicial na fila
+        fila.append(estado_inicial)
+
+        # Inicializa o contador de etapas
+        etapa = 0
+
+        # Enquanto a fila não estiver vazia
+        while fila:
+            # Remove o primeiro estado da fila
+            estado_atual = fila.pop(0)
+
+            # Verifica se o estado atual já foi visitado
+            if estado_atual not in visitados:
+                # Marca o estado atual como visitado
+                visitados.add(estado_atual)
+
+                # Obtém os vizinhos do estado atual
+                vizinhos = self.listaAdjacencia.get(estado_atual, [])
+
+                # Imprime o estado atual, o número da etapa e os vizinhos
+                print(
+                    f"Etapa {etapa}: Visitando o estado {estado_atual}, que tem os vizinhos: {vizinhos}"
+                )
+
+                # Obtém os vizinhos do estado atual
+                vizinhos = self.listaAdjacencia.get(estado_atual, [])
+
+                # Adiciona os vizinhos na fila
+                fila.extend(vizinhos)
+
+                # Incrementa o contador de etapas
+                etapa += 1
+
+    def buscarMenorCaminhoEntreDoisEstados(self, estado_inicial, estado_final):
+        """Realiza a busca em largura a partir de um estado inicial para encontrar o menor caminho até um estado final"""
+
+        # Cria uma fila vazia para armazenar os estados a serem visitados
+        fila = []
+
+        # Cria um conjunto vazio para armazenar os estados visitados
+        visitados = set()
+
+        # Adiciona o estado inicial na fila
+        fila.append([estado_inicial])
+
+        # Enquanto a fila não estiver vazia
+        while fila:
+            # Remove o primeiro caminho da fila
+            caminho = fila.pop(0)
+
+            # Obtém o estado atual do caminho
+            estado_atual = caminho[-1]
+
+            # Verifica se o estado atual é o estado final
+            if estado_atual == estado_final:
+                return caminho
+
+            # Verifica se o estado atual já foi visitado
+            if estado_atual not in visitados:
+                # Marca o estado atual como visitado
+                visitados.add(estado_atual)
+
+                # Obtém os vizinhos do estado atual
+                vizinhos = self.listaAdjacencia.get(estado_atual, [])
+
+                # Para cada vizinho do estado atual
+                for vizinho in vizinhos:
+                    # Cria um novo caminho adicionando o vizinho ao caminho atual
+                    novo_caminho = list(caminho)
+                    novo_caminho.append(vizinho)
+
+                    # Adiciona o novo caminho na fila
+                    fila.append(novo_caminho)
 
 
 if __name__ == "__main__":
@@ -254,6 +337,11 @@ if __name__ == "__main__":
     # Cria a matriz de adjacencia e imprime ela
     grafo.criarMatrizAdjacencia()
     grafo.imprimirMatrizAdjacencia()
+
+    print("\n\n")
+    grafo.buscaEmLargura("AC")
+    print("\n\n")
+    print(grafo.buscarMenorCaminhoEntreDoisEstados("AC", "SP"))
 
     # Mostra a representação grafica do grafo
     grafo.mostrarGrafoUsandoMatplotlib()
