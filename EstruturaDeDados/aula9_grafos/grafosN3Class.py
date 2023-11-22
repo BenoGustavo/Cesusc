@@ -232,7 +232,8 @@ class GrafoEstadosBrasileiros:
             estadoAtual = self.__listaEstadosBrasileiros[i]
             print(estadoAtual, linha)
 
-    def imprimirInformacosDoGrafo(self):
+    def imprimirInformacosDoGrafo(self) -> None:
+        """Mostra na tela o numero de vertices e arrestas do grafo"""
         print("Numero de vertices: " + str(self.grafo.number_of_nodes()))
         print("Numero de arrestas: " + str(self.grafo.number_of_edges()), end="\n\n")
 
@@ -346,6 +347,7 @@ if __name__ == "__main__":
 
     menorCaminho = grafo.buscarMenorCaminhoEntreDoisEstados("AC", "MT")
 
+    print("Menor caminho entre dois estados:")
     print(*menorCaminho, sep=" -> ")
 
     # Mostra a representação grafica do grafo
