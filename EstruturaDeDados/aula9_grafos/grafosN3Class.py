@@ -19,27 +19,26 @@ class GrafoEstadosBrasileiros:
 
         # fmt: off
         self.__listaEstadosBrasileiros = [
-            "AC","AL","AP","AM","BA","CE","DF","ES","GO","MA","MT","MS","MG",
+            "AC","AL","AP","AM","BA","CE","DF","ES","GO","MA","MT","MS","MG","EX1","EX2","EX3",
             "PA","PB","PR","PE","PI","RJ","RN","RS","RO","RR","SC","SP","SE","TO"
         ]
-        # fmt: on
 
         # Lista de ligações entre os estados
         self.__listaDeAdjacenciaEntreOsEstados = [
-            ("AC", ("AM", "RO")),
+            ("AC", ("AM", "RO", "EX3")),
             ("AL", ("PE", "SE")),
-            ("AP", ("PA")),
+            ("AP", ("PA","EX1","EX2")),
             ("AM", ("AC", "PA", "MT", "RO", "RR")),
             ("BA", ("SE", "PI", "TO", "MG", "ES")),
             ("CE", ("PI", "PE", "PB", "RN")),
             ("DF", ("GO",)),
             ("ES", ("MG", "RJ")),
             ("GO", ("MT", "TO", "BA", "MG", "DF", "MS")),
-            ("MA", ("PI", "TO", "PA")),
-            ("MT", ("RO", "AM", "PA", "TO", "GO", "MS")),
-            ("MS", ("PR", "SP", "MG", "GO", "MT")),
+            ("MA", ("PI", "TO", "PA","EX2")),
+            ("MT", ("RO", "AM", "PA", "TO", "GO", "MS","EX3")),
+            ("MS", ("PR", "SP", "MG", "GO", "MT","EX3")),
             ("MG", ("GO", "DF", "BA", "ES", "RJ", "SP")),
-            ("PA", ("AP", "MA", "TO", "MT", "AM", "RR")),
+            ("PA", ("AP", "MA", "TO", "MT", "AM", "RR","EX1","EX2")),
             ("PB", ("RN", "CE", "PE")),
             ("PR", ("SP", "MS", "SC")),
             ("PE", ("CE", "PI", "BA", "AL")),
@@ -47,15 +46,17 @@ class GrafoEstadosBrasileiros:
             ("RJ", ("ES", "MG", "SP")),
             ("RN", ("CE", "PB")),
             ("RS", ("SC",)),
-            ("RO", ("AC", "AM", "MT")),
-            ("RR", ("AM", "PA")),
+            ("RO", ("AC", "AM", "MT","EX3")),
+            ("RR", ("AM", "PA","EX1")),
             ("SC", ("PR")),
             ("SP", ("MG", "RJ", "PR", "MS")),
             ("SE", ("BA", "AL")),
             ("TO", ("MA", "PI", "BA", "GO", "MT", "PA")),
+            ("EX1",("AP","PA","RR")),
+            ("EX2",("AP","MA","PA")),
+            ("EX3",("AC","MT","MS","RO")),
         ]
 
-        # fmt: off
         self.__ponderacaoEntreOsEstados = [
             (803, 510),  # AC -> AM, RO
             (87, 144),  # AL -> PE, SE
@@ -85,24 +86,22 @@ class GrafoEstadosBrasileiros:
             (425, 144),  # SE -> BA, AL
             (743, 566, 794, 827, 1021,604 ),  # TO -> MA, PI, BA, GO, MT, PA
         ]
-        # fmt: on
 
-        # fmt: off
         self.__listaDeDadosDeTodosOsEstadosBrasileiros = [
-            ("AC", (("AM", 803), ("RO", 510))),
+            ("AC", (("AM", 803), ("RO", 510),("EX3",550))),
             ("AL", (("PE", 87), ("SE", 144))),
-            ("AP", (("PA", 400),)),
+            ("AP", (("PA", 400),("EX1",400),("EX2",350))),
             ("AM", (("AC", 803), ("PA", 1490), ("MT", 1424), ("RO", 934), ("RR", 804))),
             ("BA", (("SE", 425), ("PI", 402), ("TO", 794), ("MG", 774), ("ES", 871))),
             ("CE", (("PI", 529), ("PE", 452), ("PB", 341), ("RN", 263))),
             ("DF", (("GO", 174),)),
             ("ES", (("MG", 540), ("RJ", 518))),
             ("GO", (("MT", 880), ("TO", 827), ("BA", 1228), ("MG", 589), ("DF", 147), ("MS", 739))),
-            ("MA", (("PI", 376), ("TO", 743), ("PA", 824))),
-            ("MT", (("RO", 736), ("AM", 1424), ("PA", 856), ("TO", 1021), ("GO", 880), ("MS", 928))),
-            ("MS", (("PR", 573), ("SP", 893), ("MG", 1196), ("GO", 739), ("MT", 928))),
+            ("MA", (("PI", 376), ("TO", 743), ("PA", 824),("EX2",800))),
+            ("MT", (("RO", 736), ("AM", 1424), ("PA", 856), ("TO", 1021), ("GO", 880), ("MS", 928),("EX3",380))),
+            ("MS", (("PR", 573), ("SP", 893), ("MG", 1196), ("GO", 739), ("MT", 928),("EX3",450))),
             ("MG", (("GO", 598), ("DF", 498), ("BA", 774), ("ES", 540), ("RJ", 557), ("SP", 692))),
-            ("PA", (("AP", 400), ("MA", 824), ("TO", 604), ("MT", 856), ("AM", 1490), ("RR", 1440))),
+            ("PA", (("AP", 400), ("MA", 824), ("TO", 604), ("MT", 856), ("AM", 1490), ("RR", 1440),("EX1",900),("EX2",850))),
             ("PB", (("RN", 260), ("CE", 341), ("PE", 177))),
             ("PR", (("SP", 575), ("MS", 573), ("SC", 325))),
             ("PE", (("CE", 452), ("PI", 687), ("BA", 806), ("AL", 87))),
@@ -110,8 +109,8 @@ class GrafoEstadosBrasileiros:
             ("RJ", (("ES", 518), ("MG", 557), ("SP", 360))),
             ("RN", (("CE", 263), ("PB", 260))),
             ("RS", (("SC", 490),)),
-            ("RO", (("AC", 510), ("AM", 934), ("MT", 736))),
-            ("RR", (("AM", 804), ("PA", 1440))),
+            ("RO", (("AC", 510), ("AM", 934), ("MT", 736),("EX3",325))),
+            ("RR", (("AM", 804), ("PA", 1440),("EX1",450))),
             ("SC", (("PR", 325),)),
             ("SP", (("MG", 692), ("RJ", 360), ("PR", 575), ("MS", 893))),
             ("SE", (("BA", 425), ("AL", 144))),
@@ -237,7 +236,7 @@ class GrafoEstadosBrasileiros:
         print("Numero de vertices: " + str(self.grafo.number_of_nodes()))
         print("Numero de arrestas: " + str(self.grafo.number_of_edges()), end="\n\n")
 
-    def buscaEmLargura(self, estado_inicial):
+    def buscaEmLargura(self, estado_inicial: str) -> None:
         """Realiza a busca em largura a partir de um estado inicial"""
 
         # Cria uma fila vazia para armazenar os estados a serem visitados
@@ -279,7 +278,9 @@ class GrafoEstadosBrasileiros:
                 # Incrementa o contador de etapas
                 etapa += 1
 
-    def buscarMenorCaminhoEntreDoisEstados(self, estado_inicial, estado_final):
+    def buscarMenorCaminhoEntreDoisEstados(
+        self, estado_inicial: str, estado_final: str
+    ) -> list[str]:
         """Realiza a busca em largura a partir de um estado inicial para encontrar o menor caminho até um estado final"""
 
         # Cria uma fila vazia para armazenar os estados a serem visitados
@@ -339,9 +340,13 @@ if __name__ == "__main__":
     grafo.imprimirMatrizAdjacencia()
 
     print("\n\n")
+    print("Busca em largura:")
     grafo.buscaEmLargura("AC")
     print("\n\n")
-    print(grafo.buscarMenorCaminhoEntreDoisEstados("AC", "SP"))
+
+    menorCaminho = grafo.buscarMenorCaminhoEntreDoisEstados("AC", "MT")
+
+    print(*menorCaminho, sep=" -> ")
 
     # Mostra a representação grafica do grafo
     grafo.mostrarGrafoUsandoMatplotlib()
