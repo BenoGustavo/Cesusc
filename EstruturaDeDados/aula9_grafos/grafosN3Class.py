@@ -57,6 +57,7 @@ class GrafoEstadosBrasileiros:
             ("EX3",("AC","MT","MS","RO")),
         ]
 
+        #ANOTANDO AS PONDERAÇÕES ENTRE OS ESTADOS
         self.__ponderacaoEntreOsEstados = [
             (803, 510),  # AC -> AM, RO
             (87, 144),  # AL -> PE, SE
