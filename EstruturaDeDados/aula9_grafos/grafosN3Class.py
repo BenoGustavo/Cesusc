@@ -88,7 +88,7 @@ class GrafoEstadosBrasileiros:
         # fmt: on
 
         # fmt: off
-        self.__teste = [
+        self.__listaDeDadosDeTodosOsEstadosBrasileiros = [
             ("AC", (("AM", 803), ("RO", 510))),
             ("AL", (("PE", 87), ("SE", 144))),
             ("AP", (("PA", 400),)),
@@ -129,26 +129,31 @@ class GrafoEstadosBrasileiros:
         for estado in self.__listaEstadosBrasileiros:
             self.grafo.add_node(estado)
 
-        # Adiciona as ligações entre os estados como arestas do grafo
-        for ligacao in self.__listaDeAdjacenciaEntreOsEstados:
-            # Verifica se existe uma lista de adjacencia
-            if isinstance(ligacao[1], str):
-                continue
-
-            # Vincula os elementos da tupla como arestas da ligação[0]
-            for estado in ligacao[1]:
-                self.grafo.add_edge(ligacao[0], estado)
+        # Adiciona os vértices e arestas ao grafo
+        for estado, ligacoes in self.__listaDeDadosDeTodosOsEstadosBrasileiros:
+            for ligacao, peso in ligacoes:
+                self.grafo.add_edge(estado, ligacao, weight=peso)
 
     def mostrarGrafoUsandoMatplotlib(self) -> None:
         """Esse metodo mostra a representação grafica do grafo utilizando a biblioteca matplotlib
 
         ANTES DE UTILIZAR ESSE METODO É NECESSARIO CHAMAR O METODO criarGrafo"""
 
+        # Define a posição dos nós
+        pos = nx.spring_layout(self.grafo)
+
         # Utilizamos o metodo draw passando o nosso grafo preenchido como paramentro
         # O parametro with_labels é para mostrar o nome dos estados na representação grafica
-        nx.draw(self.grafo, with_labels=True)
+        nx.draw(self.grafo, pos, with_labels=True)
+
+        # Obtem os pesos das arestas e os adiciona como labels
+        edge_labels = nx.get_edge_attributes(self.grafo, "weight")
+
+        # Desenha os rótulos das arestas
+        nx.draw_networkx_edge_labels(self.grafo, pos, edge_labels=edge_labels)
 
         # Mostra a representação grafica do grafo
+        plt.savefig("grafo.png")
         plt.show()
 
     def criarListaAdjacencia(self) -> None:
