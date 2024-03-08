@@ -1,0 +1,22 @@
+.main__content{
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+}
+
+.container form p {
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: 650;
+    color: #EFE6DD;
+}
+
+.container form input{
+    margin: 1;
+}
+
+.container{
+    padding: 4rem;
+    background-color: #231F20;
+    border-radius: 3rem;
+}
