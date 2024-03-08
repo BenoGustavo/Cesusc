@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Primeira aula</title>
+
+    <!-- CSS IMPORT -->
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/main.css">
+
+    <!-- JAVASCRIPT IMPORT -->
     <script src="scripts/script.js"></script>
 </head>
+
 <body>
     <header class="nav__bar">
         <nav class="nav__items">
             <ul>
-                <li ><a href="#"><p>Page Tittle</p></a></li>
+                <li><a href="#">
+                        <p>Page Tittle</p>
+                    </a></li>
             </ul>
             <ul>
                 <li><a href="#">First Item</a></li>
@@ -26,23 +34,32 @@
     <main class="main__content">
         <div class="container">
             <form action="" method="post">
-                <p class="input__label">Enter your first name:</p>
+                <h1 class="animate-charcter">Ultra hyper form</h1>
+                <p class="input__label">Enter your first name: </p>
                 <input type="text" placeholder="Name">
                 <p class="input__label">Enter your last name:</p>
                 <input type="text" placeholder="Last Name">
                 <p class="input__label">Enter your phone number:</p>
                 <input type="text" placeholder="Phone">
-                <p class="input__label">Enter your favorite thing in the world:</p>
+                <p class="input__label">Enter your favorite thing:</p>
                 <input type="text" placeholder="Favorite thing">
-                <p class="input__label">Enter your favorite color:</p>
-                <input type="color">
+                <p class="input__label">Select your favorite color:</p>
+                <input class="color__selector" type="color">
 
-                <input type="button" value="SEND INFO">
+                <input class="button" type="button" value="SEND INFO">
             </form>
         </div>
     </main>
 
-    <footer>
+    <footer class="footer">
+        <nav class="footer__items">
+            <ul>
+                <li><a href="#">footer item</a></li>
+                <li><a href="#">footer item</a></li>
+                <li><a href="#">footer item</a></li>
+            </ul>
+        </nav>
     </footer>
 </body>
+
 </html>
