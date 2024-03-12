@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/main.css">
 
     <!-- JAVASCRIPT IMPORT -->
-    <script src="scripts/script.js"></script>
+    <script src="js/script.js"></script>
 </head>
 
 <body>
@@ -34,27 +34,26 @@
 
     <main class="main__content">
         <div class="container">
-            <form action="" method="post">
+            <form action="/submit-form" method="post" name="main__form">
                 <h1 class="animate-charcter">Ultra hyper form</h1>
                 <p class="input__label">Enter your first name: </p>
-                <input type="text" placeholder="Name">
+                <input type="text" placeholder="Name" name="name__input">
                 <p class="input__label">Enter your last name:</p>
-                <input type="text" placeholder="Last Name">
+                <input type="text" placeholder="Last Name" name="last__name__input">
                 <p class="input__label">Enter your phone number:</p>
-                <input type="text" placeholder="Phone">
+                <input type="text" placeholder="Phone" name="phone__input">
                 <p class="input__label">Enter your favorite thing:</p>
-                <input type="text" placeholder="Favorite thing">
+                <input type="text" placeholder="Favorite thing" name="favorite__thing__input">
                 <p class="input__label">Select your favorite color:</p>
-                <input class="color__selector" type="color">
+                <input class="color__selector" type="color" name="color__input">
 
-                <input class="button" type="button" value="SEND INFO">
+                <input class="button" type="button" value="SEND INFO" id="send__button">
             </form>
         </div>
 
         <div class="table__container">
-            <h1 class="animate-charcter">Ultra hyper data</h1>
-            
-            <table>
+            <h1 class="animate-charcter">Ultra hyper database</h1>
+            <table id="main__table">
                 <thead>
                     <tr>
                         <th>First name</th>
@@ -64,12 +63,7 @@
                         <th>Fav color</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <td>lorem</td>
-                    <td>ipsum</td>
-                    <td>dolor</td>
-                    <td>sit amet</td>
-                </tbody>
+
             </table>
         </div>
 

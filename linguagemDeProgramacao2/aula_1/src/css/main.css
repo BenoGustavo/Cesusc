@@ -1,6 +1,6 @@
 .main__content {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     margin-top: 5rem;
     margin-bottom: 5rem;
 }
@@ -83,7 +83,8 @@
     background-color: #883223;
 }
 
-.container h1,.table__container h1 {
+.container h1,
+.table__container h1 {
     font-size: 3rem;
     text-transform: uppercase;
     font-weight: 650;
@@ -116,34 +117,93 @@
 }
 
 /* form */
-.table__container{
+
+.table__container {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
 
-.table__container{
     padding-top: 5rem;
-    padding-bottom: 5rem;
-    padding-left:2rem ;
-    padding-right:2rem ;
+    padding-bottom: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
 
     background-color: var(--clr-secondary);
     border-radius: 3rem;
     box-shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.547);
+
+    max-height: 81rem;
+    /* adjust this value as needed */
+    overflow: auto;
 }
 
-.table__container table{
+.table__container table {
+    border-radius: 1rem;
     background-color: white;
-    padding-left: 2rem;
+
+    box-shadow: 2px 4px 4px rgba(255, 255, 255, 0.244);
 }
 
-.table__container th{
+.table__container th {
     padding-right: 2rem;
     text-transform: uppercase;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    font-family: var(--font-family);
+    text-align: center;
+
+    /* border: 1px solid var(--clr-primary); */
+    /* This adds a border to the cells */
+    /* border-radius: 1rem; */
+    padding: 10px;
+    /* This adds some space between the cell content and the borders */
 }
 
-.table__container tr{
-    border-bottom: solid var(--clr-primary);
+.table__container td {
+    font-size: 1.3rem;
+    font-family: var(--font-family);
+    text-align: center;
+
+    /* border: 1px solid var(--clr-primary);
+    border-radius: 1rem; */
+    /* This adds a border to the cells */
+    padding: 0.4rem;
+}
+
+.table__container tr:nth-child(even) {
+    background-color: #f2f2f2;
+    /* This adds a background color to every other row */
+}
+
+.table__container tr:nth-child(odd) {
+    background-color: #d9d9d9;
+    /* Darker color for odd rows */
+}
+
+.table__container td input[type="color"] {
+    border: none;
+    /* This removes the default border */
+    border-radius: 50%;
+    /* This makes the input field round */
+    width: 30px;
+    /* This sets the width of the input field */
+    height: 30px;
+    /* This sets the height of the input field */
+    -webkit-appearance: none;
+    /* This removes the default appearance */
+    -moz-appearance: none;
+    /* This removes the default appearance */
+    appearance: none;
+    /* This removes the default appearance */
+}
+
+.table__container td input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+    /* This removes the padding around the color swatch */
+}
+
+.table__container td input[type="color"]::-webkit-color-swatch {
+    border: none;
+    /* This removes the border around the color swatch */
+    border-radius: 50%;
+    /* This makes the color swatch round */
 }
