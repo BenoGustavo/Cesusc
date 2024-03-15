@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Form - Exercise 1</title>
+</head>
+<body>
+    <header class="nav">
+        <nav class="nav__items">
+            <h1>ULTRA MEGA HYPER FORM</h1>
+            <ul>
+                <li><a href="#">Something</a></li>
+                <li><a href="#">Something</a></li>
+                <li><a href="#">Something</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main__container">
+        <form class="form__container">
+            <input type="text" placeholder="Username">
+            <input type="email" placeholder="E-Mail">
+            <input type="number" placeholder="Telefone">
+            <input id="description" type="text" placeholder="Mensagem">
+
+            <button type="button" onclick="sendFormToSpace()">Send</button>
+            <h1 id="feedback"></h1>
+        </form>
+    </main>
+
+    <script src="js/scripts.js"></script>
+</body>
+</html>
