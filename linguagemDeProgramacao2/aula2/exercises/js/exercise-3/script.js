@@ -63,6 +63,11 @@ function checkAnswers() {
             select.style.backgroundColor = 'lightgreen';
             select.disabled = true;
         } else {
+
+            let rightAnswer = document.createElement('p');
+            rightAnswer.textContent = `Correct answer: ${selectedQuestions[i][selectedQuestions[i].answer]}`;
+            select.insertAdjacentElement('beforebegin', rightAnswer);
+
             select.style.border = '2px solid red';
             select.style.backgroundColor = 'lightcoral';
             select.disabled = true;
