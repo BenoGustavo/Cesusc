@@ -1,5 +1,9 @@
 let selectedQuestions = [];
 let submitButton = document.getElementById('submit__button');
+let tryAgainButton = document.getElementById('try__again__button');
+
+submitButton.addEventListener('click', checkAnswers);
+tryAgainButton.addEventListener('click', reloadPage);
 
 fetch('misc/json/questions.json')
     .then(function (response) {
@@ -24,8 +28,6 @@ fetch('misc/json/questions.json')
         alert("An error occurred while fetching the JSON file, the quiz may not work.");
     });
 
-submitButton.addEventListener('click', checkAnswers ());
-
 function displayQuestions() {
     let questionsDiv = document.getElementsByClassName('question');
 
@@ -47,16 +49,34 @@ function displayAnswers() {
 }
 
 function checkAnswers() {
-    console.log('checking answers');
+    submitButton.disabled = true;
     let correctAnswers = 0;
     let selectors = document.getElementsByName('question_answers');
+    let questionsAnweredRight = [];
 
-    selectors.forEach(function (select) {
-        for (let i = 0; i < select.options.length; i++) {
-            let option = select.options[i];
-            console.log(option.value);
+    selectors.forEach(function (select, i) {
+        if (select.value === selectedQuestions[i]["answer"]) {
+            questionsAnweredRight.push(i + 1);
+            correctAnswers++;
+
+            select.style.border = '2px solid green';
+            select.style.backgroundColor = 'lightgreen';
+            select.disabled = true;
+        } else {
+            select.style.border = '2px solid red';
+            select.style.backgroundColor = 'lightcoral';
+            select.disabled = true;
         }
     });
 
-    // alert(`You got ${correctAnswers} out of 5 questions right!`);
+    alert(`You got ${correctAnswers} out of 5 questions right!
+Questions answered right: ${questionsAnweredRight.join(', ')}`);
+
+    submitButton.type = 'hidden';
+    tryAgainButton.type = 'button';
+}
+
+function reloadPage() {
+    window.scrollTo(0, 0);
+    document.location.reload();
 }
