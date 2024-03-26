@@ -10,7 +10,7 @@ buttons.forEach(button => {
     } else if (button.id == "←") {
         button.addEventListener("click", eraseLastCharacter);
     } else if (button.id == "C") {
-        button.addEventListener("click", cleanDisplay)
+        button.addEventListener("click", cleanDisplay);
     } else {
         button.addEventListener("click", sendToDisplay);
     }

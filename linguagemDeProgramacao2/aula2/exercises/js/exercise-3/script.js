@@ -1,4 +1,5 @@
 let selectedQuestions = [];
+let submitButton = document.getElementById('submit__button');
 
 fetch('misc/json/questions.json')
     .then(function (response) {
@@ -23,6 +24,8 @@ fetch('misc/json/questions.json')
         alert("An error occurred while fetching the JSON file, the quiz may not work.");
     });
 
+submitButton.addEventListener('click', checkAnswers ());
+
 function displayQuestions() {
     let questionsDiv = document.getElementsByClassName('question');
 
@@ -41,4 +44,19 @@ function displayAnswers() {
             option.innerHTML = selectedQuestions[questionIndex][asnwersKeys[i]];
         }
     });
+}
+
+function checkAnswers() {
+    console.log('checking answers');
+    let correctAnswers = 0;
+    let selectors = document.getElementsByName('question_answers');
+
+    selectors.forEach(function (select) {
+        for (let i = 0; i < select.options.length; i++) {
+            let option = select.options[i];
+            console.log(option.value);
+        }
+    });
+
+    // alert(`You got ${correctAnswers} out of 5 questions right!`);
 }
