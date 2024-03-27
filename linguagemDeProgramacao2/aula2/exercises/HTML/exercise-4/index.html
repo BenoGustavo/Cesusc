@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/exercises/css/static/reset.css">
+    <link rel="stylesheet" href="/exercises/css/static/navbar.css">
+    <link rel="stylesheet" href="/exercises/css/exercise_4/style.css">
+    <link rel="shortcut icon" href="/exercises/img/ex4/favicon.png" type="image/x-icon">
+    <title>Exercise 4 - SwitchCase</title>
+</head>
+
+<body>
+    <input id="close__navbar" class="close__navbar" type="checkbox" aria-label="Close navbar" role="button">
+    <label class="close__navbar-label" for="close__navbar" title="close navbar"></label>
+
+    <header class="nav__container">
+        <h1 onclick="getElementById('close__navbar').checked = false;">EXERCISE THREE - QUIZ</h1>
+        <nav class="nav__items">
+            <ul onclick="getElementById('close__navbar').checked = false;">
+                <li><a href="/exercises/HTML/exercise-1/index.html">Exercise 1 - Form</a></li>
+                <li><a href="/exercises/HTML/exercise-2/index.html">Exercise 2 - Calculator</a></li>
+                <li><a href="/exercises/HTML/exercise-3/index.html">Exercise 3 - Quiz</a></li>
+                <li><a href="/exercises/HTML/exercise-4/index.html">Exercise 4 - SwitchCase</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <script src="/exercises/js/exercise-4/script.js"></script>
+</body>
