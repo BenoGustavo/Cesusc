@@ -12,11 +12,13 @@
 </head>
 
 <body>
-    <header class="nav__container">
-        <h1>EXERCISE ONE - FORMS</h1>
+    <input id="close__navbar" class="close__navbar" type="checkbox" aria-label="Close navbar" role="button">
+    <label class="close__navbar-label" for="close__navbar" title="close navbar"></label>
 
+    <header class="nav__container">
+        <h1 onclick="getElementById('close__navbar').checked = false;">EXERCISE ONE - FORMS</h1>
         <nav class="nav__items">
-            <ul>
+            <ul onclick="getElementById('close__navbar').checked = false;">
                 <li><a href="/exercises/HTML/exercise-1/index.html">Exercise 1 - Form</a></li>
                 <li><a href="/exercises/HTML/exercise-2/index.html">Exercise 2 - Calculator</a></li>
                 <li><a href="/exercises/HTML/exercise-3/index.html">Exercise 3 - Quiz</a></li>
