@@ -1,4 +1,4 @@
-# Cesusc (3 semester of 6)
+# Cesusc (4 semester of 6)
 
 <img src="assets/fachada.jpg" alt="University">
 
@@ -15,18 +15,6 @@ The directories will have the same name as the class, inside them will have the 
 
 Just use the language compiler i think we will never use a not builtin package:
 
-Linux:
-
-```
-python3 somethingElse.py
-```
-
-Windows:
-
-```
-py somethingElse.py
-```
-
 ## 😄 About me.
 
-I'm on the third semester.
+I'm on the fourth semester.
