@@ -135,7 +135,7 @@
 
     .close__navbar:checked~.nav__container {
         display: block;
-        z-index: 2;
+        z-index: 1;
     }
 
     .close__navbar:checked~.close__navbar-label::after {
