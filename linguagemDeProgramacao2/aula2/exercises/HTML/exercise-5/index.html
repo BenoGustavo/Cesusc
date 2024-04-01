@@ -29,32 +29,40 @@
     </header>
 
     <form class="form__container">
-        <div class="form__tittle">
-            <h1>Employee Salary Calculator</h1>
+        <div class="tittle">
+            <img src="misc/icon_user.png" alt="user icon image">
+            <h1>Calculator employee Salary</h1>
         </div>
-        
-        <div class="form__inputs">
-            <span>
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name">
-            </span>
-            <span>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email">
-            </span>
-            <span>
-                <label for="telephone-number">Telephone Number:</label>
-                <input type="number" id="telephone-number" name="telephone-number">
-            </span>
-            <span>
-                <label for="Mensage">Mensage:</label>
-                <input type="text" id="Mensage" name="Mensage">
-            </span>
-            <p>
-                <input class="buttons" id="send_input" type="submit" value="Submit">
-                <input class="buttons delete__button" type="reset" value="Reset">
-            </p>
-        </div>
+
+        <fieldset class="form__inputs">
+            <legend>Employee Information</legend>
+
+            <label for="employee_name">Name</label>
+            <input type="text" name="employee_name" id="employee_name" placeholder="First name">
+
+            <label for="hour_value">Hour value</label>
+            <input type="number" name="hour_value" id="hour_value" placeholder="0,00">
+
+            <label for="worked_hours">Worked Hours</label>
+            <input type="number" name="worked_hours" id="worked_hours" placeholder="0,00">
+
+            <label for="full_salary">Full salary</label>
+            <input type="number" name="full_salary" id="full_salary" placeholder="0,00" readonly>
+
+            <label for="irrf">IRRF</label>
+            <input type="number" name="irrf" id="irrf" placeholder="0,00" readonly>
+
+            <label for="bonification">Bonification</label>
+            <input type="number" name="bonification" id="bonification" placeholder="0,00" readonly>
+
+            <label for="liquid_salary">Liquid salary</label>
+            <input type="number" name="liquid_salary" id="liquid_salary" placeholder="0,00" readonly>
+        </fieldset>
+
+        <section class="form__button">
+            <input type="button" id="calculate_button" value="👍 Calculate">
+            <input type="reset" value="🧽 Reset">
+        </section>
     </form>
 
     <script src="/js/exercise-1/script.js"></script>

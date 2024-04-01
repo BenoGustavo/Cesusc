@@ -1,70 +1,103 @@
-.form__container{
-    margin-top: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.tittle img {
+    height: 100%;
+    width: 40px;
 }
 
-.form__container h1{
-    margin-bottom: 20px;
-
-}
-
-.form__container span{
+.tittle {
     display: flex;
-    flex-direction: column;
+    text-align: center;
+
     margin-bottom: 15px;
 }
 
-.form__container input{
-    padding-left: 8px;
-    margin-top: 5px;
-    width: 200px;
-    height: 30px;
+.form__container {
+    width: 100%;
+    max-width: 600px;
+    margin: 35px auto;
+    padding: 20px;
+    box-shadow: 0px 0px 10px 0px rgb(0, 0, 0);
+    border-radius: 10px;
+}
+
+.form__inputs {
+    display: grid;
+    grid-gap: 10px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.form__inputs legend {
+    text-align: center;
+}
+
+.form__inputs label {
+    display: block;
+}
+
+.form__inputs input[type="text"],
+.form__inputs input[type="number"] {
+    width: 100%;
+    padding: 10px;
     border-radius: 5px;
-    border: 1px solid #353535;
-    transition: ease-in-out 0.3s;
+    border: 1px solid #ccc;
+    text-align: right;
 }
 
-.form__container input:hover{
-    border: 1px solid #919191;
-
+.form__inputs input[type="number"]::placeholder {
+    color: gray;
 }
 
-.form__container span input{
-    width: 97%;
-}
-
-#Mensage{
-    height: 100px;
-}
-
-.form__container input:focus{
-    border: 1px solid #4CAF50;
-}
-
-.buttons{
-    margin-top: 5px;
-    width: 100px;
-    height: 30px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: ease-in-out 0.2s;
-}
-
-.buttons:hover{
-    background-color: #12c91b;
+.form__inputs input:read-only::placeholder,
+.form__inputs input:read-only {
+    background-color: lightgrey;
     color: black;
 }
 
-.delete__button{
-    background-color: rgb(206, 28, 28);
+.form__button {
+    display: flex;
+    justify-content: left;
+    margin-top: 20px;
 }
 
-.delete__button:hover{
-    background-color: #ff0000;
+.form__button input[type="button"],
+.form__button input[type="reset"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    margin-right: 15px;
+}
+
+.form__button input[type="button"] {
+    background-color: #429a45;
+    color: white;
+    transition: all 75ms ease-in;
+}
+
+.form__button input[type="button"]:hover {
+    background-color: #246926;
+    transform: scale(1.05);
+}
+
+.form__button input[type="button"]:active {
+    background-color: #1a451c;
+    transform: scale(0.98);
+}
+
+.form__button input[type="reset"] {
+    background-color: #f23a2d;
+    color: white;
+    transition: all 75ms ease-in;
+}
+
+.form__button input[type="reset"]:hover {
+    background-color: #c22f24;
+    transform: scale(1.05);
+}
+
+.form__button input[type="reset"]:active {
+    background-color: #8e231b;
+    color: white;
+    transform: scale(0.98);
 }
