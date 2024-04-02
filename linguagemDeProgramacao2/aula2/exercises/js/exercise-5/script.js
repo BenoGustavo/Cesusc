@@ -61,7 +61,7 @@ function setBonification(workedHours) {
 
 function setResultsOnScreen(fullSalary, IRRF, bonification, liquidSalary) {
     document.getElementById('full_salary').placeholder = fullSalary;
-    document.getElementById('irrf').placeholder = (IRRF * 100) + "%";
+    document.getElementById('irrf').placeholder = (IRRF * 100).toFixed(2) + "%";
     document.getElementById('bonification').placeholder = bonification;
     document.getElementById('liquid_salary').placeholder = liquidSalary;
 }
