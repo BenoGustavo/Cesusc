@@ -1,0 +1,48 @@
+/* CSS VARIABLES */
+:root {
+    --spacing: 1.5rem;
+    --main-page-width: 120rem;
+    --table-min-width: 60rem;
+    --biggest-font-size: 5rem;
+    --bigger-font-size: 4rem;
+    --big-font-size: 3.2rem;
+    --medium-font-size: 2.4rem;
+    --small-font-size: 1.6rem;
+    --smaller-font-size: 1.4rem;
+    --smallest-font-size: 1.2rem;
+    --transition-fast: 300ms;
+    --transition-medium: 600ms;
+    --transition-slow: 1s;
+    --default-border-radius: 4px;
+
+    --orange-color: rgb(255,165,0);
+
+    --dark-orange-color:rgb(201, 132, 5);
+
+    --darker-orange-color:rgb(146, 97, 4);
+
+    --black-color: black;
+    --white-color: white;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* set 1 rem to 10px */
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family:"Poppins", sans-serif;
+    line-height: 1.5;
+    font-size: var(--small-font-size);
+    color: var(--black-color);
+    -webkit-font-smoothing: antialiased;
+    background: var(--clr-light-gray);
+}

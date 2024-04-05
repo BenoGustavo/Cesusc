@@ -1,0 +1,19 @@
+.footer__container{
+    padding: 2rem;
+    background-color: var(--black-color);
+    width: 100%;
+}
+
+.footer__items{
+    display: flex;
+}
+
+.footer__items ul{
+    list-style: none;
+}
+
+.footer__items h1,
+.footer__items ul li{
+    color: var(--white-color);
+    margin: auto;
+}

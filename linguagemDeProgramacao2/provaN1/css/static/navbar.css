@@ -1,0 +1,36 @@
+.navbar__container{
+    background-color: var(--black-color);
+    width: 100%;
+}
+
+.navbar__tittle{
+    padding-top: var(--spacing);
+    display: flex;
+    color: var(--white-color);
+    justify-content: center;
+}
+
+.navbar__tittle img{
+    height: 100%;
+    width: 6rem;
+}
+
+.nav__items ul{
+    list-style: none;
+    display: flex;
+    gap: var(--spacing);
+    justify-content: center;
+    padding: 1.5rem 0px;
+}
+
+.navbar__tittle h1 a,
+.nav__items a{
+    text-decoration: none;
+    color: var(--white-color);
+    transition: ease-out 200ms;
+}
+
+.navbar__tittle h1 a:hover,
+.nav__items a:hover{
+    color: var(--orange-color);
+}
