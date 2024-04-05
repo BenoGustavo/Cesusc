@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <link rel="shortcut icon" href="/img/logo/sapachola_logo.png" type="image/x-icon">
+
     <link rel="stylesheet" href="/css/static/reset_and_variables.css">
     <link rel="stylesheet" href="/css/static/navbar.css">
     <link rel="stylesheet" href="/css/static/footer.css">
     <link rel="stylesheet" href="/css/employee/style.css">
-    
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prova N1 - Linguagem de programação 2</title>
 </head>
+
 <body>
     <!-- navbar -->
     <header class="navbar__container">
@@ -30,53 +36,251 @@
         </nav>
     </header>
 
-    <form class="form__container">
-        <div class="tittle">
-            <h1>Cadastrar funcionario</h1>
-        </div>
-
-        <fieldset class="form__inputs">
-            <legend>Criar novo funcionario</legend>
-
-            <label for="employee_name">Nome</label>
-            <input type="text" name="employee_name" id="employee_name" placeholder="Nome">
-
-            <label for="RG">RG</label>
-            <input type="number" name="RG" id="RG" placeholder="Coloque seu RG aqui">
-
-            <label for="CPF">CPF</label>
-            <input type="number" name="CPF" id="CPF" placeholder="Coloque seu CPF aqui">
-
-            <label for="data_nascimento">Data nascimento</label>
-            <input type="date" name="data_nascimento" id="data_nascimento">
-
-            <label for="telefone">Telefone</label>
-            <input type="number" name="telefone" id="telefone" placeholder="Telefone aqui">
-
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" placeholder="Email aqui">
-
-            <label for="endereço">Endereço</label>
-            <input type="text" name="endereço" id="endereco" placeholder="bota🤠">
-        </fieldset>
-
-        <section class="form__button">
-            <input type="button" id="criar_funcionario" value="Criar">
-            <input type="reset" value="Limpar">
-        </section>
-    </form>
-
-    <div class="table__container">
+    <main class="table__container">
         <table id="tableid" class="table__class">
-            <th>
-                <td>Nome</td>
-                <td>RG</td>
-                <td>CPF</td>
-                <td>EMAIL</td>
-            </th>
+            <caption>Tabela de funcionarios</caption>
+            <tr>
+                <th>Nome</th>
+                <th>RG</th>
+                <th>CPF</th>
+                <th>Nascimento</th>
+                <th>Telefone</th>
+                <th>Email</th>
+                <th>Endereço</th>
+                <th>Editar</th>
+                <th>Excluir</th>
+            </tr>
+            <tr>
+                <td>Joao pé de feijao</td>
+                <td>12345678</td>
+                <td>123.456.789-00</td>
+                <td>01/01/1980</td>
+                <td>(123) 456-7890</td>
+                <td>Joao pé de feijao@example.com</td>
+                <td>123 Main St, Anytown, Anystate</td>
+                <td><input type="button" class="editar_funcionario" value="Editar"></td>
+                <td><input type="button" class="excluir_funcionario" value="Excluir"></td>
+            </tr>
+            <tr>
+                <td>Jane Doe</td>
+                <td>87654321</td>
+                <td>987.654.321-00</td>
+                <td>02/02/1982</td>
+                <td>(321) 654-0987</td>
+                <td>janedoe@example.com</td>
+                <td>321 Elm St, Anytown, Anystate</td>
+                <td><input type="button" class="editar_funcionario" value="Editar"></td>
+                <td><input type="button" class="excluir_funcionario" value="Excluir"></td>
+            </tr>
+            <tr>
+                <td>Joao pé de feijao</td>
+                <td>12345678</td>
+                <td>123.456.789-00</td>
+                <td>01/01/1980</td>
+                <td>(123) 456-7890</td>
+                <td>Joao pé de feijao@example.com</td>
+                <td>123 Main St, Anytown, Anystate</td>
+                <td><input type="button" class="editar_funcionario" value="Editar"></td>
+                <td><input type="button" class="excluir_funcionario" value="Excluir"></td>
+            </tr>
+            <tr>
+                <td>Joao pé de feijao</td>
+                <td>12345678</td>
+                <td>123.456.789-00</td>
+                <td>01/01/1980</td>
+                <td>(123) 456-7890</td>
+                <td>Joao pé de feijao@example.com</td>
+                <td>123 Main St, Anytown, Anystate</td>
+                <td><input type="button" class="editar_funcionario" value="Editar"></td>
+                <td><input type="button" class="excluir_funcionario" value="Excluir"></td>
+            </tr>
+            <tr>
+                <td>Joao pé de feijao</td>
+                <td>12345678</td>
+                <td>123.456.789-00</td>
+                <td>01/01/1980</td>
+                <td>(123) 456-7890</td>
+                <td>Joao pé de feijao@example.com</td>
+                <td>123 Main St, Anytown, Anystate</td>
+                <td><input type="button" class="editar_funcionario" value="Editar"></td>
+                <td><input type="button" class="excluir_funcionario" value="Excluir"></td>
+            </tr>
+            <tr>
+                <td>Joao pé de feijao</td>
+                <td>12345678</td>
+                <td>123.456.789-00</td>
+                <td>01/01/1980</td>
+                <td>(123) 456-7890</td>
+                <td>Joao pé de feijao@example.com</td>
+                <td>123 Main St, Anytown, Anystate</td>
+                <td><input type="button" class="editar_funcionario" value="Editar"></td>
+                <td><input type="button" class="excluir_funcionario" value="Excluir"></td>
+            </tr>
+            <tr>
+                <td>Joao pé de feijao</td>
+                <td>12345678</td>
+                <td>123.456.789-00</td>
+                <td>01/01/1980</td>
+                <td>(123) 456-7890</td>
+                <td>Joao pé de feijao@example.com</td>
+                <td>123 Main St, Anytown, Anystate</td>
+                <td><input type="button" class="editar_funcionario" value="Editar"></td>
+                <td><input type="button" class="excluir_funcionario" value="Excluir"></td>
+            </tr>
+            <tr>
+                <td>Joao pé de feijao</td>
+                <td>12345678</td>
+                <td>123.456.789-00</td>
+                <td>01/01/1980</td>
+                <td>(123) 456-7890</td>
+                <td>Joao pé de feijao@example.com</td>
+                <td>123 Main St, Anytown, Anystate</td>
+                <td><input type="button" class="editar_funcionario" value="Editar"></td>
+                <td><input type="button" class="excluir_funcionario" value="Excluir"></td>
+            </tr>
+            <tr>
+                <td>Joao pé de feijao</td>
+                <td>12345678</td>
+                <td>123.456.789-00</td>
+                <td>01/01/1980</td>
+                <td>(123) 456-7890</td>
+                <td>Joao pé de feijao@example.com</td>
+                <td>123 Main St, Anytown, Anystate</td>
+                <td><input type="button" class="editar_funcionario" value="Editar"></td>
+                <td><input type="button" class="excluir_funcionario" value="Excluir"></td>
+            </tr>
+            <tr>
+                <td>Joao pé de feijao</td>
+                <td>12345678</td>
+                <td>123.456.789-00</td>
+                <td>01/01/1980</td>
+                <td>(123) 456-7890</td>
+                <td>Joao pé de feijao@example.com</td>
+                <td>123 Main St, Anytown, Anystate</td>
+                <td><input type="button" class="editar_funcionario" value="Editar"></td>
+                <td><input type="button" class="excluir_funcionario" value="Excluir"></td>
+            </tr>
+            <tr>
+                <td>Joao pé de feijao</td>
+                <td>12345678</td>
+                <td>123.456.789-00</td>
+                <td>01/01/1980</td>
+                <td>(123) 456-7890</td>
+                <td>Joao pé de feijao@example.com</td>
+                <td>123 Main St, Anytown, Anystate</td>
+                <td><input type="button" class="editar_funcionario" value="Editar"></td>
+                <td><input type="button" class="excluir_funcionario" value="Excluir"></td>
+            </tr>
+            <tr>
+                <td>Joao pé de feijao</td>
+                <td>12345678</td>
+                <td>123.456.789-00</td>
+                <td>01/01/1980</td>
+                <td>(123) 456-7890</td>
+                <td>Joao pé de feijao@example.com</td>
+                <td>123 Main St, Anytown, Anystate</td>
+                <td><input type="button" class="editar_funcionario" value="Editar"></td>
+                <td><input type="button" class="excluir_funcionario" value="Excluir"></td>
+            </tr>
+            <tr>
+                <td>Joao pé de feijao</td>
+                <td>12345678</td>
+                <td>123.456.789-00</td>
+                <td>01/01/1980</td>
+                <td>(123) 456-7890</td>
+                <td>Joao pé de feijao@example.com</td>
+                <td>123 Main St, Anytown, Anystate</td>
+                <td><input type="button" class="editar_funcionario" value="Editar"></td>
+                <td><input type="button" class="excluir_funcionario" value="Excluir"></td>
+            </tr>
+            <tr>
+                <td>Joao pé de feijao</td>
+                <td>12345678</td>
+                <td>123.456.789-00</td>
+                <td>01/01/1980</td>
+                <td>(123) 456-7890</td>
+                <td>Joao pé de feijao@example.com</td>
+                <td>123 Main St, Anytown, Anystate</td>
+                <td><input type="button" class="editar_funcionario" value="Editar"></td>
+                <td><input type="button" class="excluir_funcionario" value="Excluir"></td>
+            </tr>
+            <tr>
+                <td>Joao pé de feijao</td>
+                <td>12345678</td>
+                <td>123.456.789-00</td>
+                <td>01/01/1980</td>
+                <td>(123) 456-7890</td>
+                <td>Joao pé de feijao@example.com</td>
+                <td>123 Main St, Anytown, Anystate</td>
+                <td><input type="button" class="editar_funcionario" value="Editar"></td>
+                <td><input type="button" class="excluir_funcionario" value="Excluir"></td>
+            </tr>
+            <tr>
+                <td>Joao pé de feijao</td>
+                <td>12345678</td>
+                <td>123.456.789-00</td>
+                <td>01/01/1980</td>
+                <td>(123) 456-7890</td>
+                <td>Joao pé de feijao@example.com</td>
+                <td>123 Main St, Anytown, Anystate</td>
+                <td><input type="button" class="editar_funcionario" value="Editar"></td>
+                <td><input type="button" class="excluir_funcionario" value="Excluir"></td>
+            </tr>
+            <tr>
+                <td>Joao pé de feijao</td>
+                <td>12345678</td>
+                <td>123.456.789-00</td>
+                <td>01/01/1980</td>
+                <td>(123) 456-7890</td>
+                <td>Joao pé de feijao@example.com</td>
+                <td>123 Main St, Anytown, Anystate</td>
+                <td><input type="button" class="editar_funcionario" value="Editar"></td>
+                <td><input type="button" class="excluir_funcionario" value="Excluir"></td>
+            </tr>
+            <tr>
+                <td>Joao pé de feijao</td>
+                <td>12345678</td>
+                <td>123.456.789-00</td>
+                <td>01/01/1980</td>
+                <td>(123) 456-7890</td>
+                <td>Joao pé de feijao@example.com</td>
+                <td>123 Main St, Anytown, Anystate</td>
+                <td><input type="button" class="editar_funcionario" value="Editar"></td>
+                <td><input type="button" class="excluir_funcionario" value="Excluir"></td>
+            </tr>
+            <tr>
+                <td>Joao pé de feijao</td>
+                <td>12345678</td>
+                <td>123.456.789-00</td>
+                <td>01/01/1980</td>
+                <td>(123) 456-7890</td>
+                <td>Joao pé de feijao@example.com</td>
+                <td>123 Main St, Anytown, Anystate</td>
+                <td><input type="button" class="editar_funcionario" value="Editar"></td>
+                <td><input type="button" class="excluir_funcionario" value="Excluir"></td>
+            </tr>
+            <tr>
+                <td>Joao pé de feijao</td>
+                <td>12345678</td>
+                <td>123.456.789-00</td>
+                <td>01/01/1980</td>
+                <td>(123) 456-7890</td>
+                <td>Joao pé de feijao@example.com</td>
+                <td>123 Main St, Anytown, Anystate</td>
+                <td><input type="button" class="editar_funcionario" value="Editar"></td>
+                <td><input type="button" class="excluir_funcionario" value="Excluir"></td>
+            </tr>
+            <tfoot>
+                <tr>
+                    <td colspan="7">
+                        <a href="/HTML/employee_page/create/index.html"><input type="button"
+                                class="adicionar_funcionario" value="Adicionar funcionario"></a>
+                    </td>
+                </tr>
+            </tfoot>
         </table>
-    </div>
-    
+    </main>
+
     <footer class="footer__container">
         <div class="footer__items">
             <ul>
@@ -95,4 +299,5 @@
 
     <script src="/scripts/employee/script.js"></script>
 </body>
+
 </html>
