@@ -1,21 +1,24 @@
-.navbar__container{
+.navbar__container {
     background-color: var(--black-color);
     width: 100%;
+
+    z-index: 9999;
+    box-shadow: 0px 0px 1rem 0px rgb(0, 0, 0);
 }
 
-.navbar__tittle{
+.navbar__tittle {
     padding-top: var(--spacing);
     display: flex;
     color: var(--white-color);
     justify-content: center;
 }
 
-.navbar__tittle img{
+.navbar__tittle img {
     height: 100%;
     width: 6rem;
 }
 
-.nav__items ul{
+.nav__items ul {
     list-style: none;
     display: flex;
     gap: var(--spacing);
@@ -24,13 +27,38 @@
 }
 
 .navbar__tittle h1 a,
-.nav__items a{
+.nav__items a {
     text-decoration: none;
     color: var(--white-color);
     transition: ease-out 200ms;
 }
 
 .navbar__tittle h1 a:hover,
-.nav__items a:hover{
+.nav__items a:hover {
     color: var(--orange-color);
+}
+
+/* underline animation */
+
+.nav__items a {
+    display: inline-block;
+    position: relative;
+}
+
+.nav__items a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--orange-color);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.nav__items a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
