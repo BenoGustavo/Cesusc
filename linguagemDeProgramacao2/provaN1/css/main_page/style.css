@@ -1,10 +1,18 @@
-.main__container{
-    height: 100vh;
+.main__container {
     width: 100%;
-    margin-top: 5rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: var(--spacing);
+
+    height: calc(100vh - 250px);
+    overflow: auto;
 }
 
-.container__header{
+.container__header {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,22 +20,23 @@
     padding-bottom: var(--spacing);
 }
 
-.page__contents{
+.page__contents {
     display: flex;
     list-style: none;
     gap: (--spacing);
     margin: 10rem 10rem;
 }
 
-.page__contents li{
+.page__contents li {
     margin: 0px var(--spacing);
 }
 
 @media screen and (max-width: 600px) {
-    .page__contents{
+    .page__contents {
         flex-direction: column;
     }
-    .page__contents li{
+
+    .page__contents li {
         margin: var(--spacing);
     }
 }

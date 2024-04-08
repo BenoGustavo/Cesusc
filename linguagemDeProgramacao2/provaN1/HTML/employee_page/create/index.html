@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/css/static/reset_and_variables.css">
     <link rel="stylesheet" href="/css/static/navbar.css">
     <link rel="stylesheet" href="/css/static/footer.css">
-    <link rel="stylesheet" href="/css/calculator/style.css">
+    <link rel="stylesheet" href="/css/employee/create/style.css">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,36 +38,37 @@
 
     <form class="form__container">
         <div class="tittle">
-            <h1>Calculator</h1>
+            <a href="/HTML/employee_page/index.html"> ↩ </a>
+            <h1>Cadastrar funcionario</h1>
         </div>
 
         <fieldset class="form__inputs">
-            <legend>Informações do funcionario</legend>
+            <legend>Criar novo funcionario</legend>
 
             <label for="employee_name">Nome</label>
             <input type="text" name="employee_name" id="employee_name" placeholder="Nome">
 
-            <label for="hour_value">Valor da hora</label>
-            <input type="number" name="hour_value" id="hour_value" placeholder="0,00">
+            <label for="RG">RG</label>
+            <input type="number" name="RG" id="RG" placeholder="Coloque seu RG aqui">
 
-            <label for="worked_hours">Horas trabalhadas</label>
-            <input type="number" name="worked_hours" id="worked_hours" placeholder="0,00">
+            <label for="CPF">CPF</label>
+            <input type="number" name="CPF" id="CPF" placeholder="Coloque seu CPF aqui">
 
-            <label for="full_salary">Salario bruto</label>
-            <input type="number" name="full_salary" id="full_salary" placeholder="0,00" readonly>
+            <label for="data_nascimento">Data nascimento</label>
+            <input type="date" name="data_nascimento" id="data_nascimento">
 
-            <label for="irrf">IRRF</label>
-            <input type="number" name="irrf" id="irrf" placeholder="0,00" readonly>
+            <label for="telefone">Telefone</label>
+            <input type="number" name="telefone" id="telefone" placeholder="Telefone aqui">
 
-            <label for="INSS">INSS</label>
-            <input type="number" name="INSS" id="INSS" placeholder="0,00" readonly>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="Email aqui">
 
-            <label for="liquid_salary">Salario liquido</label>
-            <input type="number" name="liquid_salary" id="liquid_salary" placeholder="0,00" readonly>
+            <label for="endereço">Endereço</label>
+            <input type="text" name="endereço" id="endereco" placeholder="bota🤠">
         </fieldset>
 
         <section class="form__button">
-            <input type="button" id="calculate_button" value="Calcular">
+            <input type="button" id="criar_funcionario" value="Criar">
             <input type="reset" value="Limpar">
         </section>
     </form>
@@ -88,7 +89,7 @@
         </div>
     </footer>
 
-    <script src="/scripts/calculator/script.js"></script>
+    <script src="/scripts/employee/create/script.js"></script>
 </body>
 
 </html>

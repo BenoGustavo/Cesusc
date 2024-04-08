@@ -1,110 +1,107 @@
-.tittle {
-    display: flex;
-    justify-content: center;
-}
-
-.form__container {
-    width: 100%;
-    max-width: 60rem;
-    margin: 35px auto;
-    padding: 2rem;
-    box-shadow: 0px 0px 1rem 0px rgb(0, 0, 0);
-    border-radius: 1rem;
-}
-
-.form__inputs {
-    display: grid;
-    grid-gap: 1rem;
-    padding: 2rem;
-    border-radius: 1rem;
-}
-
-.form__inputs legend {
-    text-align: center;
-}
-
-.form__inputs label {
-    display: block;
-}
-
-.form__inputs input[type="date"],
-.form__inputs input[type="email"],
-.form__inputs input[type="text"],
-.form__inputs input[type="number"] {
-    width: 100%;
-    padding: 1rem;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    text-align: left;
-}
-
-.form__inputs input[type="number"]::placeholder {
-    color: gray;
-}
-
-.form__inputs input:read-only::placeholder,
-.form__inputs input:read-only {
-    background-color: lightgrey;
-    color: black;
-}
-
-.form__button {
-    display: flex;
-    justify-content: left;
-    margin-top: 2rem;
-}
-
-.form__button input[type="button"],
-.form__button input[type="reset"] {
+.adicionar_funcionario,
+.editar_funcionario,
+.excluir_funcionario {
     padding: 1rem 2rem;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-
-    margin-left: 23px;
 }
 
-.form__button input[type="button"] {
+.adicionar_funcionario,
+.editar_funcionario {
     background-color: var(--orange-color);
     color: white;
     transition: all 75ms ease-in;
 }
 
-.form__button input[type="button"]:hover {
+.adicionar_funcionario:hover,
+.editar_funcionario:hover {
     background-color: var(--dark-orange-color);
     transform: scale(1.05);
 }
 
-.form__button input[type="button"]:active {
-    background-color: var(--darker-orange-color);;
+.adicionar_funcionario:active,
+.editar_funcionario:active {
+    background-color: var(--darker-orange-color);
+    ;
     transform: scale(0.98);
 }
 
-.form__button input[type="reset"] {
+.excluir_funcionario {
     background-color: #f23a2d;
     color: white;
     transition: all 75ms ease-in;
 }
 
-.form__button input[type="reset"]:hover {
+.excluir_funcionario:hover {
     background-color: #c22f24;
     transform: scale(1.05);
 }
 
-.form__button input[type="reset"]:active {
+.excluir_funcionario:active {
     background-color: #8e231b;
     color: white;
     transform: scale(0.98);
 }
 
-.table__container{
+.table__container {
     display: flex;
     justify-content: center;
+    align-items: center;
+
+    width: fit-content;
+
+    margin: var(--spacing) auto;
+
+    text-align: center;
+    padding: var(--spacing) 3rem;
     box-shadow: 0px 0px 1rem 0px rgb(0, 0, 0);
-    margin: 1rem;
+
+    border-radius: 2rem;
+
+    overflow: auto;
 }
 
+.table__class {
+    border-collapse: collapse;
+    border: 1px solid var(--orange-color);
+}
 
-.table__class td{
-    padding: 1rem 3rem;
+.table__class caption {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+
+    text-transform: uppercase;
+}
+
+.table__class th,
+.table__class td {
+    width: fit-content;
+    text-align: center;
+    padding: 0.5rem;
+}
+
+.table__class th {
+    background-color: var(--orange-color);
+    color: white;
+}
+
+.table__class tfoot tr td {
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.table__class tfoot tr td input {
+    margin-top: var(--spacing);
+}
+
+.table__class tr:nth-child(odd) {
+    background-color: white;
+}
+
+.table__class tr:nth-child(even) {
+    background-color: rgb(200, 200, 200);
 }
