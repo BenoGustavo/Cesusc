@@ -39,4 +39,13 @@
     .page__contents li {
         margin: var(--spacing);
     }
+
+    .main__container{
+        height: fit-content;
+    }
+    
+    .container__header p,
+    .container__header h1{
+        text-align: center;
+    }
 }

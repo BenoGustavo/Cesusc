@@ -17,3 +17,9 @@
     color: var(--white-color);
     margin: auto;
 }
+
+@media screen and (max-width: 600px) {
+    .footer__items{
+        flex-direction: column-reverse;
+    }
+}

@@ -23,7 +23,6 @@
 .adicionar_funcionario:active,
 .editar_funcionario:active {
     background-color: var(--darker-orange-color);
-    ;
     transform: scale(0.98);
 }
 
@@ -49,8 +48,6 @@
     justify-content: center;
     align-items: center;
 
-    width: fit-content;
-
     margin: var(--spacing) auto;
 
     text-align: center;
@@ -65,6 +62,9 @@
 .table__class {
     border-collapse: collapse;
     border: 1px solid var(--orange-color);
+
+    width: fit-content;
+    overflow: auto;
 }
 
 .table__class caption {
@@ -104,4 +104,21 @@
 
 .table__class tr:nth-child(even) {
     background-color: rgb(200, 200, 200);
+}
+
+@media screen and (max-width: 600px) {
+    .table__container {
+        margin: 2rem 0rem;
+        padding: 0px;
+        border-radius: 0%;
+
+        justify-content: left;
+        align-items: left;
+    
+    }
+
+    .table__class caption{
+        margin-left: 2rem;
+        text-align: left;
+    }
 }
