@@ -1,4 +1,9 @@
-.container{
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: rgba(0, 0, 0, 0.086);
+}
+
+.container {
     height: 100%;
     width: 100%;
 
@@ -6,44 +11,129 @@
     align-items: center;
     justify-content: center;
 
+    overflow: scroll;
+
+    gap: 3rem;
+
     position: fixed;
 }
 
-.container fieldset{
+.container p {
+    text-align: center;
+}
+
+.container fieldset {
     display: flex;
     flex-direction: column;
 
     justify-content: center;
 
-    height: 400px;
-    width: 400px;
+    height: 325px;
+    width: 325px;
 
     border-radius: 15px;
+
+    background-color: white;
+
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.297);
 }
 
-.container fieldset legend{
+.container fieldset legend {
     font-size: 25px;
     text-transform: uppercase;
-    font-weight: bolder;
+    font-weight: 600;
 
     text-align: center;
 }
 
-.container input[type="email"],
-.container input[type="password"]{
-    border-radius: 5px;
+.container fieldset form {
+    display: flex;
+    flex-direction: column;
 
-    height: 50px;
-
-    margin: 10px;
+    justify-content: center;
+    align-items: center;
 }
 
-.container input[type="submit"]{
-    display: block;
+.container input[type="email"],
+.container input[type="password"] {
+    border-radius: 5px;
 
-    margin: 0 auto;
+    width: 235px;
+    height: 50px;
+
+    padding: 0px 10px;
+
+    margin: 10px;
+
+    border: solid 1px black;
+    transition: all 0.3s ease-in-out;
+}
+
+.container input[type="email"]:hover,
+.container input[type="password"]:hover {
+    border: solid 1px green;
+}
+
+.container input[type="email"]:focus,
+.container input[type="password"]:focus {
+    border: solid 1px green;
+    box-shadow: 0px 0px 5px 1px green;
+    outline: none;
+}
+
+.button_group {
+    display: flex;
+    gap: 2rem;
+}
+
+.container input[type="reset"],
+.container input[type="submit"] {
+    margin-top: 12px;
 
     width: 100px;
-    height: 50px;
+    height: 45px;
     border-radius: 5px;
+
+    font-weight: bolder;
+
+    color: white;
+
+    border: none;
+    transition: all 0.2s ease-in-out;
+
+    box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.467);
+}
+
+.container input[type="reset"] {
+    background-color: red;
+}
+
+.container input[type="reset"]:hover {
+    background-color: rgb(133, 6, 6);
+    transform: scale(1.03);
+}
+
+.container input[type="reset"]:active {
+    transform: scale(0.98);
+}
+
+.container input[type="submit"] {
+    background-color: green;
+}
+
+.container input[type="submit"]:hover {
+    background-color: darkgreen;
+    transform: scale(1.03);
+}
+
+.container input[type="submit"]:active {
+    transform: scale(0.98);
+}
+
+@media screen and (max-width: 724px) {
+    .container {
+        margin-top: 30px;
+        height: fit-content;
+        flex-direction: column;
+    }
 }
