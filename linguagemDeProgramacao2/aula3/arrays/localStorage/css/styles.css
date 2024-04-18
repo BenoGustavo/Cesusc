@@ -87,7 +87,7 @@ body {
 }
 
 .container input[type="reset"],
-.container input[type="submit"] {
+.container input[type="button"] {
     margin-top: 12px;
 
     width: 100px;
@@ -117,16 +117,16 @@ body {
     transform: scale(0.98);
 }
 
-.container input[type="submit"] {
+.container input[type="button"] {
     background-color: green;
 }
 
-.container input[type="submit"]:hover {
+.container input[type="button"]:hover {
     background-color: darkgreen;
     transform: scale(1.03);
 }
 
-.container input[type="submit"]:active {
+.container input[type="button"]:active {
     transform: scale(0.98);
 }
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -22,12 +22,12 @@
             <fieldset>
                 <legend>Cadastro</legend>
                 <p>Cadastrar no local storage</p>
-                <form action="/index.html">
-                    <input type="email" placeholder="Email" required>
-                    <input type="password" placeholder="Password" required>
+                <form>
+                    <input id="register_email_field" type="email" placeholder="Email" required>
+                    <input id="register_password_field" type="password" placeholder="Password" required>
 
                     <div class="button_group">
-                        <input type="submit" value="Cadastrar">
+                        <input id="register_button" type="button" value="Cadastrar">
                         <input type="reset" value="Limpar">
                     </div>
                 </form>
@@ -39,12 +39,12 @@
             <fieldset>
                 <legend>Login</legend>
                 <p>Verificar no local storage</p>
-                <form action="/index.html">
-                    <input type="email" placeholder="Email" required>
-                    <input type="password" placeholder="Password" required>
+                <form>
+                    <input id="login_email_field" type="email" placeholder="Email" required>
+                    <input id="login_password_field" type="password" placeholder="Password" required>
 
                     <div class="button_group">
-                        <input type="submit" value="Entrar">
+                        <input id="login_button" type="button" value="Entrar">
                     </div>
                 </form>
 
@@ -52,5 +52,6 @@
         </section>
     </main>
 </body>
+<script src="/js/scripts.js"></script>
 
 </html>
