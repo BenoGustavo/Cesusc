@@ -3,26 +3,26 @@ let calculateButton = document.getElementById("calculate_button")
 calculateButton.addEventListener('click', calculate);
 
 function calculate() {
-    const NAME = document.getElementById("employee_name").value
-    const HOUR_VALUE = document.getElementById("hour_value").value
-    const WORKED_HOURS = document.getElementById("worked_hours").value
+    let NAME = document.getElementById("employee_name").value
+    let HOUR_VALUE = document.getElementById("hour_value").value
+    let WORKED_HOURS = document.getElementById("worked_hours").value
 
     if (isFieldEmpty(NAME, HOUR_VALUE, WORKED_HOURS)) {
         alert("COMPLETA AI 👍👏💋")
         return
     }
 
-    const FULL_SALARY = HOUR_VALUE * WORKED_HOURS
+    FULL_SALARY = HOUR_VALUE * WORKED_HOURS
 
-    const INSS = getInss(FULL_SALARY)
-    const IRRF = getIrrf(FULL_SALARY)
+    let INSS = getInss(FULL_SALARY)
+    let IRRF = getIrrf(FULL_SALARY)
     const TAXA_FIXA = 0
 
     if (FULL_SALARY > 2212 && FULL_SALARY <= 2640) {
         TAXA_FIXA = 528
     }
 
-    const LIQUID_SALARY = FULL_SALARY - ((FULL_SALARY * IRRF) + (FULL_SALARY * INSS) + TAXA_FIXA)
+    let LIQUID_SALARY = FULL_SALARY - ((FULL_SALARY * IRRF) + (FULL_SALARY * INSS) + TAXA_FIXA)
 
     displayInformation(FULL_SALARY, IRRF, INSS, LIQUID_SALARY)
 }
