@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criador de contas - POO</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/index-style.css">
+    <link rel="stylesheet" href="/static/css/criador-de-contas-style.css">
+
+</head>
+
+<body>
+    <div class="page-title">
+        <h1>Criador de contas</h1>
+        <p>Selecione o tipo de conta que deseja</p>
+    </div>
+
+    <div class="radio-input-container">
+        <div class="form-check">
+            <input class="form-check-input bg-dark" type="radio" name="contas" id="contaEspecial" value="especial">
+            <label class="form-check-label" for="contaEspecial">
+                <strong>Conta especial</strong>
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input bg-dark" type="radio" name="contas" id="contaPoupança" value="poupanca"
+                checked>
+            <label class="form-check-label" for="contaPoupança">
+                <strong>Conta poupança</strong>
+            </label>
+        </div>
+    </div>
+
+    <div class="input-group">
+        <fieldset class="bg-dark">
+            <legend class="text-white">Preencha aqui as suas informações</legend>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="fieldNomeTitular" placeholder="Nome do titular">
+                <label for="floatingInput">Titular</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+            </div>
+            <button type="button" class="btn btn-success">Criar conta</button>
+        </fieldset>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+<script src=" /js/headerInjector.js"></script>
+<script src="/js/criadorDeContas/criadorDeContasClass.js"></script>
+<script type="module" src="/js/criadorDeContas/criadorDeContas.js"></script>
+
+</html>

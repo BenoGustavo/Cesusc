@@ -1,0 +1,32 @@
+.page-title {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.radio-input-container {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.input-group {
+    display: flex;
+    justify-content: center;
+    margin: 3rem 0;
+}
+
+.input-group fieldset {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.input-group fieldset legend {
+    margin-bottom: 1.5rem;
+}
+
+.input-group fieldset button {
+    margin-top: 1.5rem;
+}
