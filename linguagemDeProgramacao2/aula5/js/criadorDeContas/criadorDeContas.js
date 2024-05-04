@@ -86,17 +86,17 @@ let fecharModalContaEspecial = document.getElementById("fecharModalContaEspecial
 let fecharModalContaPoupanca = document.getElementById("fecharModalContaPoupanca")
 
 fecharModalContaEspecial.addEventListener("click", function () {
-    let modalContaEspecial = document.getElementById("modalContaEspecial").style.display = "none"
+    document.getElementById("modalContaEspecial").style.display = "none"
 })
 
 fecharModalContaPoupanca.addEventListener("click", function () {
-    let modalContaPoupanca = document.getElementById("modalContaPoupanca").style.display = "none"
+    document.getElementById("modalContaPoupanca").style.display = "none"
 })
 
 abrirModalContaEspecial.addEventListener("click", function () {
-    let modalContaEspecial = document.getElementById("modalContaEspecial").style.display = "block"
+    document.getElementById("modalContaEspecial").style.display = "block"
 })
 
 abrirModalContaPoupanca.addEventListener("click", function () {
-    let modalContaPoupanca = document.getElementById("modalContaPoupanca").style.display = "block"
+    document.getElementById("modalContaPoupanca").style.display = "block"
 })
