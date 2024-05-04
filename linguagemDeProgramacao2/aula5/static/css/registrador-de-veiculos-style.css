@@ -1,0 +1,50 @@
+.page-title {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.radio-input-container {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.input-group {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.input-group fieldset {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.input-group fieldset legend {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.input-group fieldset button {
+    margin-top: 1.5rem;
+}
+
+.ver-contas-container {
+    max-width: fit-content;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem auto;
+    text-align: center;
+}
+
+.ver-contas-container .buttons-container {
+    display: flex;
+    gap: 1.5rem
+}
+
+.table {
+    border-radius: 8px;
+}

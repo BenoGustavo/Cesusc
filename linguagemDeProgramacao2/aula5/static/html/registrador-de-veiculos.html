@@ -7,10 +7,141 @@
     <title>Registrador de veiculos - POO</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/registrador-de-veiculos-style.css">
 </head>
 
 <body>
+    <div class="page-title">
+        <h1>Registrador de veiculos</h1>
+        <p>Selecione o tipo de veiculo que deseja</p>
+    </div>
 
+    <div class="radio-input-container">
+        <div class="form-check">
+            <input class="form-check-input bg-dark" type="radio" name="contas" id="carroRadio" value="carro" checked>
+            <label class="form-check-label" for="carroRadio">
+                <strong>Carro</strong>
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input bg-dark" type="radio" name="contas" id="caminhaoRadio" value="caminhao">
+            <label class="form-check-label" for="caminhaoRadio">
+                <strong>Caminhão</strong>
+            </label>
+        </div>
+    </div>
+
+    <div class="input-group" id="veiculosCaminhaoContainerId" style="display: none;">
+        <fieldset class="bg-dark">
+            <legend class="text-white"><strong>Caminhão</strong></br>Preencha aqui as informações do veiculo</legend>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="fieldNome" placeholder="Nome" autocomplete="off">
+                <label for="floatingInput">Nome</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="fieldMarca" placeholder="fieldMarca" autocomplete="off">
+                <label for="fieldMarca">Marca</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" id="fieldEixos" placeholder="Eixos" autocomplete="off">
+                <label for="fieldEixos">Eixos</label>
+            </div>
+            <button type="button" id="buttonEspecialCreate" class="btn btn-success">Registrar caminhão</button>
+        </fieldset>
+    </div>
+    <div class="input-group" id="veiculosCarroContainerId">
+        <fieldset class="bg-dark">
+            <legend class="text-white"><strong>Carro</strong></br>Preencha aqui as informações do veiculo</legend>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="fieldNome" placeholder="Nome" autocomplete="off">
+                <label for="floatingInput">Nome</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="fieldMarcaCarro" placeholder="fieldMarcaCarro"
+                    autocomplete="off">
+                <label for="fieldMarcaCarro">Marca</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" id="fieldPortas" placeholder="Portas" autocomplete="off">
+                <label for="fieldPortas">Numero de portas</label>
+            </div>
+            <button type="button" id="buttonPoupancaCreate" class="btn btn-success">Registrar carro</button>
+        </fieldset>
+    </div>
+
+    <div class="ver-contas-container bg-dark">
+        <h3 class="text-white">Ver veiculos cadastrados:</h3>
+        <div class="buttons-container">
+            <button type="button" id="buttonEspecialVer" class="btn btn-success">Ver caminhões</button>
+            <button type="button" id="buttonPoupancaVer" class="btn btn-success">Ver carros</button>
+        </div>
+    </div>
+
+    <!-- MODAL -->
+    <!-- Caminhão -->
+    <div id="modalCaminhao" class="modal fade show" style="display: none;">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title text-white">Caminhões registrados</h5>
+                    <button type="button" id="fecharModalCaminhao" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Marca</th>
+                                <th scope="col">Numero de eixos</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body-caminhao">
+                            <!-- <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL -->
+    <!-- Carros -->
+    <div id="modalCarros" class="modal fade show" style="display: none;">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title text-white">Carros registrados</h5>
+                    <button type="button" id="fecharModalCarros" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Marca</th>
+                                <th scope="col">Numero portas</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body-carro">
+                            <!-- <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
