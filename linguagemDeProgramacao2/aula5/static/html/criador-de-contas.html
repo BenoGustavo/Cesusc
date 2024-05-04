@@ -84,6 +84,82 @@
             <button type="button" id="buttonPoupancaCreate" class="btn btn-success">Criar conta</button>
         </fieldset>
     </div>
+
+    <div class="ver-contas-container bg-dark">
+        <h3 class="text-white">Ver dados cadastrados:</h3>
+        <div class="buttons-container">
+            <button type="button" id="buttonEspecialVer" class="btn btn-success">Contas Especiais</button>
+            <button type="button" id="buttonPoupancaVer" class="btn btn-success">Contas Poupanças</button>
+        </div>
+    </div>
+
+    <!-- MODAL -->
+    <!-- CONTA ESPECIAL -->
+    <div id="modalContaEspecial" class="modal fade show" style="display: none;">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title text-white">Contas Especiais</h5>
+                    <button type="button" id="fecharModalContaEspecial" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Titular</th>
+                                <th scope="col">Numero do banco</th>
+                                <th scope="col">Nome do banco</th>
+                                <th scope="col">Limite</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body-especial">
+                            <!-- <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL -->
+    <!-- CONTA POUPANCA -->
+    <div id="modalContaPoupanca" class="modal fade show" style="display: none;">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title text-white">Contas Poupanças</h5>
+                    <button type="button" id="fecharModalContaPoupanca" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Titular</th>
+                                <th scope="col">Numero do banco</th>
+                                <th scope="col">Nome do banco</th>
+                                <th scope="col">Data do aniversario</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body-poupanca">
+                            <!-- <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
