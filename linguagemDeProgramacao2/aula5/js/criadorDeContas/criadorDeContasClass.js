@@ -33,7 +33,7 @@ export class Especial extends Conta {
     }
 
     getLimite() {
-        return this.limite
+        return this.#limite
     }
     setLimite(novoLimite) {
         this.#limite = novoLimite
@@ -53,7 +53,7 @@ export class Poupanca extends Conta {
     }
 
     getaniversaro() {
-        return this.aniversaro
+        return this.#aniversaro
     }
     setaniversaro(novoaniversaro) {
         this.#aniversaro = novoaniversaro
