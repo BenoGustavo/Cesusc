@@ -39,44 +39,49 @@
         <fieldset class="bg-dark">
             <legend class="text-white"><strong>CONTA ESPECIAL</strong></br>Preencha aqui as suas informações</legend>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="fieldNomeTitular" placeholder="Nome do titular">
+                <input type="text" class="form-control" id="fieldNomeTitular" placeholder="Nome do titular"
+                    autocomplete="off">
                 <label for="floatingInput">Titular</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="fieldNumeroBanco" placeholder="fieldNumeroBanco">
+                <input type="number" class="form-control" id="fieldNumeroBanco" placeholder="fieldNumeroBanco"
+                    autocomplete="off">
                 <label for="fieldNumeroBanco">Insira o numero do banco</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="fieldBanco" placeholder="Banco">
+                <input type="text" class="form-control" id="fieldBanco" placeholder="Banco" autocomplete="off">
                 <label for="fieldBanco">Nome do banco</label>
             </div>
             <div class="form-floating">
-                <input type="number" class="form-control" id="fieldLimite" placeholder="Limite">
+                <input type="number" class="form-control" id="fieldLimite" placeholder="Limite" autocomplete="off">
                 <label for="fieldLimite">Insira o seu limite</label>
             </div>
-            <button type="button" class="btn btn-success">Criar conta</button>
+            <button type="button" id="buttonEspecialCreate" class="btn btn-success">Criar conta</button>
         </fieldset>
     </div>
     <div class="input-group" id="contaPoupancaContainerId">
         <fieldset class="bg-dark">
             <legend class="text-white"><strong>CONTA POUPANÇA</strong></br>Preencha aqui as suas informações</legend>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="fieldNomeTitular" placeholder="Nome do titular">
+                <input type="text" class="form-control" id="fieldNomePoupancaTitular" placeholder="Nome do titular"
+                    autocomplete="off">
                 <label for="floatingInput">Titular</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="fieldNumeroBanco" placeholder="fieldNumeroBanco">
+                <input type="number" class="form-control" id="fieldNumeroBancoPoupanca" placeholder="fieldNumeroBanco"
+                    autocomplete="off">
                 <label for="fieldNumeroBanco">Insira o numero do banco</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="fieldBanco" placeholder="Banco">
+                <input type="text" class="form-control" id="fieldPoupancaBanco" placeholder="Banco" autocomplete="off">
                 <label for="fieldBanco">Nome do banco</label>
             </div>
             <div class="form-floating">
-                <input type="date" class="form-control" id="fieldAniversario" placeholder="Aniversario">
+                <input type="date" class="form-control" id="fieldAniversario" placeholder="Aniversario"
+                    autocomplete="off">
                 <label for="fieldAniversario">Insira seu aniversario</label>
             </div>
-            <button type="button" class="btn btn-success">Criar conta</button>
+            <button type="button" id="buttonPoupancaCreate" class="btn btn-success">Criar conta</button>
         </fieldset>
     </div>
 </body>
@@ -84,7 +89,7 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
 <script src=" /js/headerInjector.js"></script>
-<script src="/js/criadorDeContas/criadorDeContasClass.js"></script>
+<script type="module" src="/js/criadorDeContas/criadorDeContasClass.js"></script>
 <script type="module" src="/js/criadorDeContas/criadorDeContas.js"></script>
 
 </html>

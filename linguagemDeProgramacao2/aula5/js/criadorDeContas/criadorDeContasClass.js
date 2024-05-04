@@ -25,7 +25,7 @@ class Conta {
     }
 }
 
-class Especial extends Conta {
+export class Especial extends Conta {
     #limite
     constructor(titular, numero, banco, limite) {
         super(titular, numero, banco)
@@ -45,7 +45,7 @@ class Especial extends Conta {
 
 }
 
-class Poupanca extends Conta {
+export class Poupanca extends Conta {
     #aniversaro
     constructor(titular, numero, banco, aniversaro) {
         super(titular, numero, banco)
