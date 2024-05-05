@@ -36,3 +36,15 @@
     border: solid 1px green;
     z-index: 3;
 }
+
+.card .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-container .card .card-body a {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+}
