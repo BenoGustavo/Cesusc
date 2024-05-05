@@ -6,7 +6,7 @@ class Pessoa {
     }
 }
 
-class Cliente extends Pessoa {
+export class Cliente extends Pessoa {
     constructor(nome, cpf, dataNascimento, email, telefone) {
         super(nome, cpf, dataNascimento)
         this.email = email
@@ -22,7 +22,7 @@ class Cliente extends Pessoa {
     }
 }
 
-class Funcionario extends Pessoa {
+export class Funcionario extends Pessoa {
     constructor(nome, cpf, dataNascimento, salario) {
         super(nome, cpf, dataNascimento)
         this.salario = salario
