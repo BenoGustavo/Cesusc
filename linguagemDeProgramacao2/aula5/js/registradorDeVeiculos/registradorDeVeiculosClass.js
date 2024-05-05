@@ -3,7 +3,7 @@ class Veiculo {
     #marca
     constructor(nome, marca) {
         this.#nome = nome
-        this.marca = marca
+        this.#marca = marca
     }
 
     getMarca() {
