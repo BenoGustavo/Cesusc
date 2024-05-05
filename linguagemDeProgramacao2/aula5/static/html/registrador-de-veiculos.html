@@ -46,14 +46,14 @@
                 <input type="number" class="form-control" id="fieldEixos" placeholder="Eixos" autocomplete="off">
                 <label for="fieldEixos">Eixos</label>
             </div>
-            <button type="button" id="buttonEspecialCreate" class="btn btn-success">Registrar caminhão</button>
+            <button type="button" id="buttonCaminhaoCriar" class="btn btn-success">Registrar caminhão</button>
         </fieldset>
     </div>
     <div class="input-group" id="veiculosCarroContainerId">
         <fieldset class="bg-dark">
             <legend class="text-white"><strong>Carro</strong></br>Preencha aqui as informações do veiculo</legend>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="fieldNome" placeholder="Nome" autocomplete="off">
+                <input type="text" class="form-control" id="fieldNomeCarro" placeholder="Nome" autocomplete="off">
                 <label for="floatingInput">Nome</label>
             </div>
             <div class="form-floating mb-3">
@@ -65,15 +65,15 @@
                 <input type="number" class="form-control" id="fieldPortas" placeholder="Portas" autocomplete="off">
                 <label for="fieldPortas">Numero de portas</label>
             </div>
-            <button type="button" id="buttonPoupancaCreate" class="btn btn-success">Registrar carro</button>
+            <button type="button" id="buttonCarroCriar" class="btn btn-success">Registrar carro</button>
         </fieldset>
     </div>
 
     <div class="ver-contas-container bg-dark">
         <h3 class="text-white">Ver veiculos cadastrados:</h3>
         <div class="buttons-container">
-            <button type="button" id="buttonEspecialVer" class="btn btn-success">Ver caminhões</button>
-            <button type="button" id="buttonPoupancaVer" class="btn btn-success">Ver carros</button>
+            <button type="button" id="buttonCaminhaoVer" class="btn btn-success">Ver caminhões</button>
+            <button type="button" id="buttonCarroVer" class="btn btn-success">Ver carros</button>
         </div>
     </div>
 
@@ -147,5 +147,7 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
 <script src="/js/headerInjector.js"></script>
+<script type="module" src="/js/registradorDeVeiculos/registradorDeVeiculosClass.js"></script>
+<script type="module" src="/js/registradorDeVeiculos/registradorDeVeiculos.js"></script>
 
 </html>
