@@ -16,6 +16,9 @@ let buttonApagarFuncionario = document.getElementById('apagarFuncionario')
 let modalClientesCloseButton = document.getElementById('modalClientesCloseButton')
 let modalFuncionarioCloseButton = document.getElementById('modalFuncionarioCloseButton')
 
+let clienteTableHeading = ["Nome", "CPF", "Data de Nascimento", "Email", "Telefone"]
+let funcionarioTableHeading = ["Nome", "CPF", "Data de Nascimento", "Salário"]
+
 let modalIDS = ['modal-body-clientes', 'modal-body-funcionarios']
 
 let camposCliente = [
@@ -37,7 +40,7 @@ let camposFuncionario = [
 //MODAL
 buttonVizualizarTabelaCliente.addEventListener('click', () => {
     document.getElementById("modalClientesVizualizar").style.display = "flex"
-    vizualizarEmTabela(clienteControladora, modalIDS[0])
+    vizualizarEmTabela(clienteControladora, modalIDS[0], clienteTableHeading)
 })
 
 modalClientesCloseButton.addEventListener('click', () => {
@@ -53,7 +56,7 @@ buttonCadastrarCliente.addEventListener('click', () => {
 //MODAL
 buttonVizualizarTabelaFuncionario.addEventListener('click', () => {
     document.getElementById("modalFuncionariosVizualizar").style.display = "flex"
-    vizualizarEmTabela(funcionarioControladora, modalIDS[1])
+    vizualizarEmTabela(funcionarioControladora, modalIDS[1], funcionarioTableHeading)
 })
 
 modalFuncionarioCloseButton.addEventListener('click', () => {
@@ -69,6 +72,9 @@ buttonCadastrarFuncionario.addEventListener('click', () => {
 function cadastrarUsuario(objectController, campos, modalID, objectName) {
     let modalBody = document.getElementById(modalID)
     modalBody.innerHTML = ""
+
+    let form = document.createElement('form')
+
     let fieldset = document.createElement('fieldset')
     fieldset.className = 'bg-dark'
     fieldset.id = 'fieldset-cadastro'
@@ -86,6 +92,25 @@ function cadastrarUsuario(objectController, campos, modalID, objectName) {
         input.placeholder = campo.placeholder
         input.autocomplete = 'off'
         input.required = true
+
+        if (campo.label == "Nome") {
+            input.type = 'text'
+        }
+        if (campo.label == "CPF") {
+            input.type = 'number'
+            input.maxLength = 11
+        }
+        if (campo.label == "Data de Nascimento") {
+            input.type = 'date'
+        }
+        if (campo.label == "Email") {
+            input.type = 'email'
+        }
+        if (campo.label == "Telefone") {
+            input.type = 'number'
+            input.maxLength = 9
+        }
+
         let label = document.createElement('label')
         label.htmlFor = campo.id
         label.innerHTML = campo.label
@@ -95,11 +120,13 @@ function cadastrarUsuario(objectController, campos, modalID, objectName) {
     })
 
     let button = document.createElement('button')
-    button.type = 'button'
+    button.type = 'submit'
     button.className = 'btn btn-success'
     button.innerHTML = 'Cadastrar'
 
-    button.addEventListener('click', () => {
+    form.addEventListener('submit', (event) => {
+        event.preventDefault()
+
         let fieldSet = document.getElementById('fieldset-cadastro')
         let camposValue = []
         let camposFieldset = fieldSet.getElementsByTagName('input')
@@ -111,10 +138,11 @@ function cadastrarUsuario(objectController, campos, modalID, objectName) {
     })
 
     fieldset.appendChild(button)
-    modalBody.appendChild(fieldset)
+    form.appendChild(fieldset)
+    modalBody.appendChild(form)
 }
 
-function vizualizarEmTabela(objectController, modalID) {
+function vizualizarEmTabela(objectController, modalID, tableHeadings) {
     let objects = objectController.getAll()
     let modalBody = document.getElementById(modalID)
     modalBody.innerHTML = ''
@@ -136,11 +164,13 @@ function vizualizarEmTabela(objectController, modalID) {
 
     // Create table headers
     let headerRow = document.createElement('tr');
-    Object.keys(objects[0]).forEach(key => {
+
+    tableHeadings.forEach(heading => {
         let th = document.createElement('th');
-        th.innerHTML = key.charAt(0).toUpperCase() + key.slice(1);
+        th.innerHTML = heading;
         headerRow.appendChild(th);
     });
+
     thead.appendChild(headerRow);
     table.appendChild(thead);
 
