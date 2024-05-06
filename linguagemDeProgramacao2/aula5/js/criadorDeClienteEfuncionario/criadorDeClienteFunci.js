@@ -5,12 +5,10 @@ let clienteControladora = new ClienteControladora()
 
 let buttonVizualizarTabelaCliente = document.getElementById('vizualizarCliente')
 let buttonCadastrarCliente = document.getElementById('cadastrarCliente')
-let buttonAtualizarCliente = document.getElementById('atualizarCliente')
 let buttonApagarCliente = document.getElementById('apagarCliente')
 
 let buttonVizualizarTabelaFuncionario = document.getElementById('vizualizarFuncionario')
 let buttonCadastrarFuncionario = document.getElementById('cadastrarFuncionario')
-let buttonAtualizarFuncionario = document.getElementById('atualizarFuncionario')
 let buttonApagarFuncionario = document.getElementById('apagarFuncionario')
 
 let modalClientesCloseButton = document.getElementById('modalClientesCloseButton')
