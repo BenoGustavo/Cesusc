@@ -5,6 +5,7 @@
 
 .card-body {
     text-align: center;
+    margin: 1.5rem 0;
 }
 
 .card-body p {
