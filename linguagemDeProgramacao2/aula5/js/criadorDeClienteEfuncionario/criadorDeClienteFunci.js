@@ -5,17 +5,15 @@ let clienteControladora = new ClienteControladora()
 
 let buttonVizualizarTabelaCliente = document.getElementById('vizualizarCliente')
 let buttonCadastrarCliente = document.getElementById('cadastrarCliente')
-let buttonApagarCliente = document.getElementById('apagarCliente')
 
 let buttonVizualizarTabelaFuncionario = document.getElementById('vizualizarFuncionario')
 let buttonCadastrarFuncionario = document.getElementById('cadastrarFuncionario')
-let buttonApagarFuncionario = document.getElementById('apagarFuncionario')
 
 let modalClientesCloseButton = document.getElementById('modalClientesCloseButton')
 let modalFuncionarioCloseButton = document.getElementById('modalFuncionarioCloseButton')
 
-let clienteTableHeading = ["Nome", "CPF", "Data de Nascimento", "Email", "Telefone"]
-let funcionarioTableHeading = ["Nome", "CPF", "Data de Nascimento", "Salário"]
+let clienteTableHeading = ["Nome", "CPF", "Data de Nascimento", "Email", "Telefone", "Apagar"]
+let funcionarioTableHeading = ["Nome", "CPF", "Data de Nascimento", "Salário", "Apagar"]
 
 let modalIDS = ['modal-body-clientes', 'modal-body-funcionarios']
 
@@ -180,6 +178,19 @@ function vizualizarEmTabela(objectController, modalID, tableHeadings) {
             td.innerHTML = object[key];
             tr.appendChild(td);
         });
+
+        let td = document.createElement('td');
+        let button = document.createElement('button');
+        button.className = 'btn btn-danger';
+        button.innerHTML = 'Apagar';
+        button.addEventListener('click', () => {
+            objectController.delete(object.cpf)
+            alert('Registro apagado com sucesso!')
+            vizualizarEmTabela(objectController, modalID, tableHeadings)
+        });
+        td.appendChild(button);
+        tr.appendChild(td);
+
         tbody.appendChild(tr);
     });
     table.appendChild(tbody);
