@@ -97,4 +97,21 @@ export class LivroController {
     removerLivro(titulo) {
         this.#livros = this.#livros.filter(livro => livro.getTitulo() !== titulo)
     }
+
+    toString() {
+        return this.#livros.map(livro => livro.toString()).join('\n')
+    }
+
+    salvarLivros() {
+        localStorage.setItem('livros', JSON.stringify(this.#livros))
+    }
+
+    carregarLivros() {
+        const livros = JSON.parse(localStorage.getItem('livros'))
+        if (livros) {
+            livros.forEach(livro => {
+                this.adicionarLivro(new Livro(livro.getTitulo(), livro.getAutor(), livro.getEditora(), livro.getAno(), livro.getPaginas()))
+            });
+        }
+    }
 }
