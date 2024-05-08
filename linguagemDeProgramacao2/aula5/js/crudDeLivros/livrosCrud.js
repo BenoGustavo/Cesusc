@@ -17,8 +17,19 @@ createLivro.addEventListener("click", () => {
 
     let livroFields = getLivroFields("fieldTitulo", "fieldAutor", "fieldEditora", "fieldAno", "fieldPaginas");
 
+    if (livroFields.some(field => field === "")) {
+        alert("Preencha todos os campos!")
+        return
+    }
+
+    if (isBookAlreadyRegistered(livroFields[0])) {
+        alert("Livro já cadastrado!")
+        return
+    }
+
     livroController.criarLivro(...livroFields);
     updateTable()
+    alert("Livro cadastrado com sucesso!")
 });
 
 function getLivroFields(tituloId, autorId, editoraId, anoId, paginasId) {
@@ -29,6 +40,19 @@ function getLivroFields(tituloId, autorId, editoraId, anoId, paginasId) {
         document.getElementById(anoId).value,
         document.getElementById(paginasId).value
     ];
+}
+
+function setLivroFields(tituloId, autorId, editoraId, anoId, paginasId, livro) {
+    document.getElementById(tituloId).value = livro.titulo
+    document.getElementById(autorId).value = livro.autor
+    document.getElementById(editoraId).value = livro.editora
+    document.getElementById(anoId).value = livro.ano
+    document.getElementById(paginasId).value = livro.paginas
+}
+
+function isBookAlreadyRegistered(titulo) {
+    let livros = livroController.listarLivros()
+    return livros.some(livro => livro.titulo === titulo)
 }
 
 function createButton(className, innerHTML, clickHandler) {
@@ -57,6 +81,8 @@ function updateTable() {
             event.preventDefault()
             document.getElementById("attLivro").style.display = "flex"
 
+            setLivroFields("fieldAttTitulo", "fieldAttAutor", "fieldAttEditora", "fieldAttAno", "fieldAttPaginas", livroUnidade)
+
             let attLivroButton = document.getElementById("attLivroBtn");
 
             let livroFields = getLivroFields("fieldAttTitulo", "fieldAttAutor", "fieldAttEditora", "fieldAttAno", "fieldAttPaginas");
@@ -75,7 +101,10 @@ function updateTable() {
                 alert('Registro atualizado com sucesso!')
                 updateTable()
             })
-        });
+        })
+
+        attButton.setAttribute('data-bs-toggle', 'modal');
+        attButton.setAttribute('data-bs-target', '#attLivro');
 
         let td = document.createElement("td")
         td.appendChild(attButton);
@@ -98,7 +127,11 @@ function updateTable() {
 function isBookEmpty() {
     let localStorageLivros = JSON.parse(localStorage.getItem('livros'))
 
-    return true
+    if (localStorageLivros === null || localStorageLivros.length === 0) {
+        return true
+    }
+
+    return false
 }
 
 function populateLocalStorage() {
