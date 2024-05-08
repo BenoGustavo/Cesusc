@@ -3,6 +3,8 @@ import { LivroController } from "./livrosClass.js";
 const livroController = new LivroController();
 livroController.carregarLivros();
 
+populateLocalStorage()
+
 let adicionarLivroButton = document.getElementById("adicionarLivro");
 let createLivro = document.getElementById("criarLivroBtn")
 
@@ -10,19 +12,32 @@ adicionarLivroButton.addEventListener("click", () => {
     document.getElementById("criarLivro").style.display = "flex";
 });
 
-
 createLivro.addEventListener("click", () => {
     event.preventDefault()
 
-    let tituloField = document.getElementById("fieldTitulo").value;
-    let autorField = document.getElementById("fieldAutor").value;
-    let editoraField = document.getElementById("fieldEditora").value;
-    let anoField = document.getElementById("fieldAno").value;
-    let paginasField = document.getElementById("fieldPaginas").value;
+    let livroFields = getLivroFields("fieldTitulo", "fieldAutor", "fieldEditora", "fieldAno", "fieldPaginas");
 
-    livroController.criarLivro(tituloField, autorField, editoraField, anoField, paginasField);
+    livroController.criarLivro(...livroFields);
     updateTable()
 });
+
+function getLivroFields(tituloId, autorId, editoraId, anoId, paginasId) {
+    return [
+        document.getElementById(tituloId).value,
+        document.getElementById(autorId).value,
+        document.getElementById(editoraId).value,
+        document.getElementById(anoId).value,
+        document.getElementById(paginasId).value
+    ];
+}
+
+function createButton(className, innerHTML, clickHandler) {
+    let button = document.createElement('button');
+    button.className = className;
+    button.innerHTML = innerHTML;
+    button.addEventListener('click', clickHandler);
+    return button;
+}
 
 function updateTable() {
     let tableBodyId = document.getElementById("table-body-id")
@@ -38,63 +53,72 @@ function updateTable() {
             tr.appendChild(td);
         });
 
-        let td = document.createElement("td")
-        let attButton = document.createElement('button');
-        attButton.className = 'btn btn-success';
-        attButton.innerHTML = 'Atualizar';
-        attButton.setAttribute("data-bs-toggle", "modal");
-        attButton.setAttribute("data-bs-target", "#attLivro")
-
-        attButton.addEventListener('click', () => {
+        let attButton = createButton('btn btn-success', 'Atualizar', () => {
             event.preventDefault()
             document.getElementById("attLivro").style.display = "flex"
 
             let attLivroButton = document.getElementById("attLivroBtn");
 
-            let newTitulo = document.getElementById("fieldAttTitulo").value = livroUnidade.titulo
-            let newAutor = document.getElementById("fieldAttAutor").value = livroUnidade.autor
-            let newEditora = document.getElementById("fieldAttEditora").value = livroUnidade.editora
-            let newAno = document.getElementById("fieldAttAno").value = livroUnidade.ano
-            let newPaginas = document.getElementById("fieldAttPaginas").value = livroUnidade.paginas
-
+            let livroFields = getLivroFields("fieldAttTitulo", "fieldAttAutor", "fieldAttEditora", "fieldAttAno", "fieldAttPaginas");
 
             attLivroButton.addEventListener("click", () => {
                 event.preventDefault()
 
-                newTitulo = document.getElementById("fieldAttTitulo").value
-                newAutor = document.getElementById("fieldAttAutor").value
-                newEditora = document.getElementById("fieldAttEditora").value
-                newAno = document.getElementById("fieldAttAno").value
-                newPaginas = document.getElementById("fieldAttPaginas").value
+                livroFields = getLivroFields("fieldAttTitulo", "fieldAttAutor", "fieldAttEditora", "fieldAttAno", "fieldAttPaginas");
 
-                console.log(livroUnidade.titulo, newTitulo, newAutor, newEditora, newAno, newPaginas)
-                if (newTitulo == "" || newAutor == "" || newEditora == "" || newAno == "" || newPaginas == "") {
+                if (livroFields.some(field => field === "")) {
                     alert("Preencha todos os campos!")
                     return
                 }
 
-                livroController.atualizarLivro(livroUnidade.titulo, newTitulo, newAutor, newEditora, newAno, newPaginas)
+                livroController.atualizarLivro(livroUnidade.titulo, ...livroFields)
                 alert('Registro atualizado com sucesso!')
                 updateTable()
             })
         });
+
+        let td = document.createElement("td")
         td.appendChild(attButton);
         tr.appendChild(td);
 
-        let td2 = document.createElement("td")
-        let delButton = document.createElement('button');
-        delButton.className = 'btn btn-danger';
-        delButton.innerHTML = 'Deletar';
-        delButton.addEventListener('click', () => {
+        let delButton = createButton('btn btn-danger', 'Deletar', () => {
             livroController.removerLivro(livroUnidade.titulo)
             alert('Registro apagado com sucesso!')
             updateTable()
         });
+
+        let td2 = document.createElement("td")
         td2.appendChild(delButton);
         tr.appendChild(td2);
 
         tableBodyId.appendChild(tr)
     })
+}
+
+function isBookEmpty() {
+    let localStorageLivros = JSON.parse(localStorage.getItem('livros'))
+
+    return true
+}
+
+function populateLocalStorage() {
+    if (isBookEmpty()) {
+        livroController.criarLivro("O Senhor dos Anéis", "J. R. R. Tolkien", "HarperCollins", "1954", "1170")
+        livroController.criarLivro("O Hobbit", "J. R. R. Tolkien", "HarperCollins", "1937", "310")
+        livroController.criarLivro("Dom Quixote", "Miguel de Cervantes", "Editora 34", "1605", "863")
+        livroController.criarLivro("Cem Anos de Solidão", "Gabriel García Márquez", "Record", "1967", "458")
+        livroController.criarLivro("A Montanha Mágica", "Thomas Mann", "Companhia das Letras", "1924", "1048")
+        livroController.criarLivro("O Apanhador no Campo de Centeio", "J. D. Salinger", "Editora do Autor", "1951", "288")
+        livroController.criarLivro("O Processo", "Franz Kafka", "Companhia das Letras", "1925", "254")
+        livroController.criarLivro("O Estrangeiro", "Albert Camus", "Record", "1942", "158")
+        livroController.criarLivro("O Velho e o Mar", "Ernest Hemingway", "Bertrand Brasil", "1952", "128")
+        livroController.criarLivro("A Divina Comédia", "Dante Alighieri", "Martin Claret", "1320", "592")
+        livroController.criarLivro("Odisseia", "Homero", "Martin Claret", "800 a.C.", "560")
+        livroController.criarLivro("Ilíada", "Homero", "Martin Claret", "800 a.C.", "560")
+        livroController.criarLivro("A Metamorfose", "Franz Kafka", "Companhia das Letras", "1915", "232")
+        livroController.criarLivro("O Primo Basílio", "Eça de Queirós", "Martin Claret", "1878", "320")
+        livroController.criarLivro("O Cortiço", "Aluísio Azevedo", "Martin Claret", "1890", "320")
+    }
 }
 
 updateTable()

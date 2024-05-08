@@ -5,10 +5,11 @@
 
 .table {
     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.293);
+    margin-bottom: 0;
 }
 
 .botao-redondo {
-    position: absolute;
+    position: fixed;
     right: 20px;
     bottom: 20px;
 
