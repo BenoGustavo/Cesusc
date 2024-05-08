@@ -4,7 +4,7 @@ Este projeto é uma coleção de exercícios práticos de Programação Orientad
 
 ## Links de Deploy
 
-[https://exercises-poo-2qfd30md5-gustavos-projects-56051056.vercel.app/](https://exercises-poo-js.vercel.app/)
+https://exercises-poo-js.vercel.app/
 
 ## Estrutura do Projeto
 
