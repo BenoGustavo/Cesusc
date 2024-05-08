@@ -29,18 +29,64 @@
                     <th scope="col">Deletar</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td scope="row">Item</td>
-                    <td>Item</td>
-                    <td>Item</td>
-                    <td>Item</td>
-                    <td>Item</td>
-                    <td>Item</td>
-                    <td>Item</td>
-                </tr>
+            <tbody id="table-body-id">
             </tbody>
         </table>
+    </div>
+
+    <!-- modalUpdate -->
+    <div class="modal fade" id="attLivro" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
+        aria-labelledby="modalTitleId" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-m" role="document">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title text-white" id="modalTitleId">
+                        Atualizar um livro
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <form>
+                    <div class="modal-body">
+
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="fieldAttTitulo" placeholder="fieldAttTitulo"
+                                autocomplete="off" required>
+                            <label for="fieldAttTitulo">Titulo</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="fieldAttAutor" placeholder="fieldAttAutor"
+                                autocomplete="off" required>
+                            <label for="fieldAttAutor">Autor</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="fieldAttEditora" placeholder="fieldAttEditora"
+                                autocomplete="off" required>
+                            <label for="fieldAttEditora">Editora</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="number" class="form-control" id="fieldAttAno" placeholder="fieldAttAno"
+                                autocomplete="off" required>
+                            <label for="fieldAttAno">Ano</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="number" class="form-control" id="fieldAttPaginas" placeholder="fieldAttPaginas"
+                                autocomplete="off" required>
+                            <label for="fieldAttPaginas">Número de paginas</label>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" id="attLivroBtn" class="btn btn-success">Atualizar Livro</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
     </div>
 
     <!-- Modal Criar novo livro -->
@@ -52,7 +98,8 @@
                     <h5 class="modal-title text-white" id="modalTitleId">
                         Criar um novo livro
                     </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" id="btn-close-modal" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
 
                 <form>
@@ -90,7 +137,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-success">Criar livro</button>
+                        <button type="submit" id="criarLivroBtn" class="btn btn-success">Criar livro</button>
                     </div>
                 </form>
 

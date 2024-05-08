@@ -1,59 +1,54 @@
 class Livro {
-    #autor
-    #titulo
-    #editora
-    #ano
-    #paginas
     constructor(titulo, autor, editora, ano, paginas) {
-        this.#titulo = titulo;
-        this.#autor = autor;
-        this.#editora = editora;
-        this.#ano = ano;
-        this.#paginas = paginas;
+        this.titulo = titulo;
+        this.autor = autor;
+        this.editora = editora;
+        this.ano = ano;
+        this.paginas = paginas;
     }
 
     getAutor() {
-        return this.#autor;
+        return this.autor;
     }
 
     getTitulo() {
-        return this.#titulo;
+        return this.titulo;
     }
 
     getEditora() {
-        return this.#editora;
+        return this.editora;
     }
 
     getAno() {
-        return this.#ano;
+        return this.ano;
     }
 
     getPaginas() {
-        return this.#paginas;
+        return this.paginas;
     }
 
     setAutor(autor) {
-        this.#autor = autor;
+        this.autor = autor;
     }
 
     setTitulo(titulo) {
-        this.#titulo = titulo;
+        this.titulo = titulo;
     }
 
     setEditora(editora) {
-        this.#editora = editora;
+        this.editora = editora;
     }
 
     setAno(ano) {
-        this.#ano = ano;
+        this.ano = ano;
     }
 
     setPaginas(paginas) {
-        this.#paginas = paginas;
+        this.paginas = paginas;
     }
 
     toString() {
-        return `Título: ${this.#titulo}, Autor: ${this.#autor}, Editora: ${this.#editora}, Ano: ${this.#ano}, Páginas: ${this.#paginas}`;
+        return `Título: ${this.titulo}, Autor: ${this.autor}, Editora: ${this.editora}, Ano: ${this.ano}, Páginas: ${this.paginas}`;
     }
 }
 
@@ -65,6 +60,7 @@ export class LivroController {
 
     criarLivro(titulo, autor, editora, ano, paginas) {
         this.#livros.push(new Livro(titulo, autor, editora, ano, paginas))
+        this.salvarLivros()
         return this.#livros[this.#livros.length - 1]
     }
 
@@ -80,10 +76,12 @@ export class LivroController {
             livro.setAno(ano)
             livro.setPaginas(paginas)
         }
+        this.salvarLivros()
     }
 
     adicionarLivro(livro) {
         this.#livros.push(livro)
+        this.salvarLivros()
     }
 
     listarLivros() {
@@ -96,6 +94,7 @@ export class LivroController {
 
     removerLivro(titulo) {
         this.#livros = this.#livros.filter(livro => livro.getTitulo() !== titulo)
+        this.salvarLivros()
     }
 
     toString() {
@@ -110,7 +109,7 @@ export class LivroController {
         const livros = JSON.parse(localStorage.getItem('livros'))
         if (livros) {
             livros.forEach(livro => {
-                this.adicionarLivro(new Livro(livro.getTitulo(), livro.getAutor(), livro.getEditora(), livro.getAno(), livro.getPaginas()))
+                this.adicionarLivro(new Livro(livro.titulo, livro.autor, livro.editora, livro.ano, livro.paginas))
             });
         }
     }
