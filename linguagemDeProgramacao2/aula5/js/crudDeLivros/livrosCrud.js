@@ -42,22 +42,40 @@ function updateTable() {
         let attButton = document.createElement('button');
         attButton.className = 'btn btn-success';
         attButton.innerHTML = 'Atualizar';
+        attButton.setAttribute("data-bs-toggle", "modal");
+        attButton.setAttribute("data-bs-target", "#attLivro")
+
         attButton.addEventListener('click', () => {
-            document.getElementById("attLivro").style.opacity = 1
+            event.preventDefault()
             document.getElementById("attLivro").style.display = "flex"
 
             let attLivroButton = document.getElementById("attLivroBtn");
 
+            let newTitulo = document.getElementById("fieldAttTitulo").value = livroUnidade.titulo
+            let newAutor = document.getElementById("fieldAttAutor").value = livroUnidade.autor
+            let newEditora = document.getElementById("fieldAttEditora").value = livroUnidade.editora
+            let newAno = document.getElementById("fieldAttAno").value = livroUnidade.ano
+            let newPaginas = document.getElementById("fieldAttPaginas").value = livroUnidade.paginas
+
+
             attLivroButton.addEventListener("click", () => {
-                let newTitulo = document.getElementById("fieldAttTitulo")
-                let newAutor = document.getElementById("fieldAttAutor")
-                let newEditora = document.getElementById("fieldAttEditora")
-                let newAno = document.getElementById("fieldAttAno")
-                let newPaginas = document.getElementById("fieldAttPaginas")
+                event.preventDefault()
+
+                newTitulo = document.getElementById("fieldAttTitulo").value
+                newAutor = document.getElementById("fieldAttAutor").value
+                newEditora = document.getElementById("fieldAttEditora").value
+                newAno = document.getElementById("fieldAttAno").value
+                newPaginas = document.getElementById("fieldAttPaginas").value
+
+                console.log(livroUnidade.titulo, newTitulo, newAutor, newEditora, newAno, newPaginas)
+                if (newTitulo == "" || newAutor == "" || newEditora == "" || newAno == "" || newPaginas == "") {
+                    alert("Preencha todos os campos!")
+                    return
+                }
 
                 livroController.atualizarLivro(livroUnidade.titulo, newTitulo, newAutor, newEditora, newAno, newPaginas)
-                alert('Registro apagado com sucesso!')
-                document.getElementById("attLivro").style.display = "none"
+                alert('Registro atualizado com sucesso!')
+                updateTable()
             })
         });
         td.appendChild(attButton);

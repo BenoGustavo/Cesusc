@@ -64,13 +64,14 @@ export class LivroController {
         return this.#livros[this.#livros.length - 1]
     }
 
-    atualizarLivro(titulo, autor, editora, ano, paginas) {
-        if (!titulo) {
+    atualizarLivro(tituloProcura, newTitulo, autor, editora, ano, paginas) {
+        if (!tituloProcura) {
             return alert('Título é obrigatório')
         }
 
-        const livro = this.buscarLivro(titulo)
+        const livro = this.buscarLivro(tituloProcura)
         if (livro) {
+            livro.setTitulo(newTitulo)
             livro.setAutor(autor)
             livro.setEditora(editora)
             livro.setAno(ano)
