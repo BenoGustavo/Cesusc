@@ -6,8 +6,4 @@ LABEL maintainer="gustavoleandrogorges@gmail.com"
 # imagem como uma nova camada.
 # Agrupar os comandos em um único RUN pode reduzir a quantidade de camadas da 
 # imagem e torná-la mais eficiente.
-RUN adduser --disabled-password --no-create-home duser && \
-    chmod a+rwx /var/lib/pgadmin/sessions
-
-# Muda o usuário para duser
-USER duser
+RUN chmod a+rwx /var/lib/pgadmin/sessions

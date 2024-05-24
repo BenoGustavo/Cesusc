@@ -1,5 +1,5 @@
 const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize('postgres://postgres:postgres@postgres:5432/tasks_database');
+const sequelize = new Sequelize('postgres://postgres:postgres@localhost:5432/tasks_databases');
 
 const Task = sequelize.define(
     'Task', {
@@ -11,3 +11,5 @@ const Task = sequelize.define(
     completedAt: { type: DataTypes.DATE, allowNull: true }
 }
 );
+
+sequelize.sync({ force: true });

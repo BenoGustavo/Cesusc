@@ -16,7 +16,7 @@ services:
     image: dpage/pgadmin4
     container_name: pgadmin
     environment:
-      PGADMIN_DEFAULT_EMAIL: 'root@root.com.br'
+      PGADMIN_DEFAULT_EMAIL: 'gustavo.gorges@faculdadecesusc.edu.br'
       PGADMIN_DEFAULT_PASSWORD: 'root'
     ports:
       - '16543:80'
