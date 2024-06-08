@@ -8,7 +8,20 @@ const Task = sequelize.define(
         description: { type: DataTypes.STRING, allowNull: false },
         completed: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false },
         completedAt: { type: DataTypes.DATE, allowNull: true, defaultValue: DataTypes.NULL },
-        deadlineDate: { type: DataTypes.DATE, allowNull: true, defaultValue: DataTypes.NOW }
+        deadlineDate: { type: DataTypes.DATE, allowNull: true, defaultValue: DataTypes.NOW },
+        userId: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'users',
+                key: 'id'
+            },
+            validate: {
+                notNull: {
+                    msg: 'userId is required'
+                }
+            }
+        }
     },
     {
         tableName: 'tasks',
@@ -17,6 +30,6 @@ const Task = sequelize.define(
     }
 );
 
-sequelize.sync(syncOptions = { force: true })
+sequelize.sync()
 
 module.exports = { Task }

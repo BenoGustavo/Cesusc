@@ -9,6 +9,23 @@ class TasksService {
         return Task.findByPk(id);
     }
 
+    getTaskByUserIdAndTaskId(userId, taskId) {
+        return Task.findOne({
+            where: {
+                userId: userId,
+                id: taskId
+            }
+        });
+    }
+
+    getAllTasksByUserId(userId) {
+        return Task.findAll({
+            where: {
+                userId: userId
+            }
+        });
+    }
+
     getByDeadlineDate(deadlineDate) {
         return Task.findAll({
             where: {

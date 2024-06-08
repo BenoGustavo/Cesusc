@@ -5,6 +5,23 @@ class TasksController {
         this.tasksService = new TasksService();
     }
 
+    getTaskByUserIdAndTaskId = async (ctx) => {
+        const taskId = ctx.params.taskId;
+        const userId = ctx.params.userId;
+
+        console.log("taskid" + taskId + "userId" + userId)
+        const task = await this.tasksService.getTaskByUserIdAndTaskId(userId, taskId);
+        ctx.status = task ? 200 : 404;
+        ctx.body = task || { error: 'Task not found' };
+    }
+
+    getAllTasksByUserId = async (ctx) => {
+        const userId = ctx.params.userId;
+        const tasks = await this.tasksService.getAllTasksByUserId(userId);
+        ctx.status = tasks.length ? 200 : 204;
+        ctx.body = tasks.length ? tasks : { message: 'No tasks found' };
+    }
+
     getAll = async (ctx) => {
         const tasks = await this.tasksService.getAll();
         ctx.status = tasks.length ? 200 : 204;
