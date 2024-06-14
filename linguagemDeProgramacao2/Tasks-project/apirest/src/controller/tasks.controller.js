@@ -44,9 +44,16 @@ class TasksController {
 
     create = async (ctx) => {
         const newTask = ctx.request.body;
-        const createdTask = await this.tasksService.create(newTask);
-        ctx.status = createdTask ? 201 : 400;
-        ctx.body = createdTask || { error: 'Task creation failed' };
+
+        try {
+            const createdTask = await this.tasksService.create(newTask);
+            ctx.status = 201
+            ctx.body = createdTask || { error: "sucess" };
+        } catch (e) {
+            console.log(e)
+            ctx.status = 400
+            ctx.body = { error: 'Task creation failed' + e };
+        }
     }
 
     update = async (ctx) => {

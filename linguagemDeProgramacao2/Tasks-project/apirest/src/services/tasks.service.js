@@ -35,7 +35,11 @@ class TasksService {
     }
 
     create(task) {
-        return Task.create(task);
+        try {
+            return Task.create(task);
+        } catch (e) {
+            console.log(e);
+        }
     }
 
     update(id, task) {
