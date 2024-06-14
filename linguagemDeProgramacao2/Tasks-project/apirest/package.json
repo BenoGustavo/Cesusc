@@ -4,6 +4,8 @@
   "description": "A simple task api",
   "main": "src/app.js",
   "dependencies": {
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
     "koa": "^2.15.3",
     "koa-bodyparser": "^4.4.1",
     "koa-morgan": "^1.0.1",
