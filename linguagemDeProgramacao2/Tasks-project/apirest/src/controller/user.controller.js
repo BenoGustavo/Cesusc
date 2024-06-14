@@ -1,5 +1,6 @@
 const UserService = require('../services/user.service')
 const TasksController = require('../controller/tasks.controller')
+const bcrypt = require('bcryptjs')
 
 class UserController {
     constructor() {
@@ -30,10 +31,36 @@ class UserController {
     }
 
     create = async (ctx) => {
-        const newUser = ctx.request.body;
-        const createdUser = await this.userController.create(newUser);
-        ctx.status = createdUser ? 201 : 400;
-        ctx.body = createdUser || { error: 'User creation failed' };
+        const password = ctx.request.body.password
+
+        if (!password) {
+            ctx.status = 400
+            ctx.body = { error: 'Password is required' }
+            return
+        }
+
+        bcrypt.genSalt(Number(process.env.HASH_ROUND), (err, salt) => {
+            bcrypt.hash(password, salt, async (err, hash) => {
+                if (err) {
+                    ctx.status = 400
+                    ctx.body = { error: 'Password hashing failed' }
+                    return
+                }
+
+                ctx.request.body.password = hash;
+                const user = await this.userController.create(ctx.request.body);
+
+                ctx.status = user ? 201 : 400;
+
+                return
+            })
+
+            if (err) {
+                ctx.status = 400
+                ctx.body = { error: 'Password hashing failed' }
+                return
+            }
+        })
     }
 
     update = async (ctx) => {

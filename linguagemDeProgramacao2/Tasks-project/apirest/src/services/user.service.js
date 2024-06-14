@@ -8,7 +8,7 @@ class UserService {
                 model: Task,
                 as: 'tasks'
             }]
-        });
+        })
     }
 
     getAllTasks() {
@@ -17,19 +17,23 @@ class UserService {
                 model: Task,
                 as: 'tasks'
             }]
-        });
+        })
     }
 
     getAll() {
-        return User.findAll();
+        return User.findAll({
+            attributes: { exclude: ['password'] }
+        })
     }
 
     getById(id) {
-        return User.findByPk(id);
+        return User.findByPk(id, {
+            attributes: { exclude: ['password'] }
+        })
     }
 
     create(user) {
-        return User.create(user);
+        return User.create(user)
     }
 
     update(id, user) {
@@ -37,7 +41,7 @@ class UserService {
             where: {
                 id: id
             }
-        });
+        })
     }
 
     delete(id) {
@@ -54,9 +58,9 @@ class UserService {
                 where: {
                     id: id
                 }
-            });
+            })
         } catch (e) {
-            console.log(e);
+            console.log(e)
         }
     }
 }
