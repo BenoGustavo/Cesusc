@@ -1,0 +1,38 @@
+# Dependências
+**/node_modules
+
+# Logs
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+
+# Runtime data
+**/pids
+**/*.pid
+**/*.seed
+**/*.log
+
+# Diretório de build
+**/dist
+
+# Arquivos de ambiente
+**/.env
+
+# Editor directories and files
+**/.idea
+**/*.suo
+**/*.ntvs*
+**/*.njsproj
+**/*.sln
+**/*.sw?
+**/*.lock
+**/npm-debug.log
+**/yarn-debug.log
+**/yarn-error.log
+**/yarn.lock
+**/package-lock.json
+**/yarn-*.json
+
+# Jest
+**/coverage
+.vercel
