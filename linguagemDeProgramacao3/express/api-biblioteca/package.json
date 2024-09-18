@@ -35,6 +35,8 @@
   },
   "homepage": "https://github.com/BenoGustavo/Cesusc#readme",
   "dependencies": {
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
     "eslint": "^9.9.1",
     "express": "^4.19.2",
     "prettier": "^3.3.3",
@@ -42,6 +44,7 @@
     "typescript": "^5.5.4"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "nodemon": "^3.1.4"
   }

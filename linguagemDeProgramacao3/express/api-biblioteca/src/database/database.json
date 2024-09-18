@@ -1,0 +1,22 @@
+[
+    {
+      "id": 1,
+      "author": "F. Scott Fitzgerald",
+      "description": "A novel set in the 1920s...",
+      "excerpt": "In my younger and more vulnerable years...",
+      "relaseDate": "1925-04-10",
+      "age": 98,
+      "createdAt": "2023-10-01T12:00:00Z",
+      "title": "The Great Gatsby"
+    },
+    {
+      "id": 2,
+      "author": "Harper Lee",
+      "description": "A novel about racial injustice...",
+      "excerpt": "When he was nearly thirteen, my brother Jem got his arm badly broken...",
+      "relaseDate": "1960-07-11",
+      "age": 63,
+      "createdAt": "2023-10-01T12:00:00Z",
+      "title": "To Kill a Mockingbird"
+    }
+  ]
